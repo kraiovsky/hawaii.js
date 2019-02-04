@@ -1,0 +1,20 @@
+{
+  "name": "@hypefight/json-api-serializer",
+  "description": "",
+  "keywords": [],
+  "repository": "",
+  "author": "Roman Krayovskyy",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn jest"
+  },
+  "dependencies": {
+    "@hypefight/test-helpers": "^0.0.1",
+    "json-api-serializer": "^1.13.0"
+  },
+  "devDependencies": {
+    "jest": "^24.0.0"
+  }
+}

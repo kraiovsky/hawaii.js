@@ -1,0 +1,3 @@
+To Do:
+  ☐ Create front-end with Next.js and serve from lambda
+  ☐ Implement AWS Lambda warm starts https://serverless.com/blog/keep-your-lambdas-warm/ or https://read.acloud.guru/how-to-keep-your-lambda-functions-warm-9d7e1aa6e2f0 

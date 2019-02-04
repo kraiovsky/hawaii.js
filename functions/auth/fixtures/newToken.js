@@ -1,0 +1,8 @@
+module.exports = {
+  refreshToken:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MDNlN2I5OC1mYTUyLTExZTgtODY0NC1kMWU2ZDFiYTEyOGIiLCJlbWFpbCI6ImFkbWluQGRvbWFpbi5jb20iLCJzY29wZSI6ImFkbWluIiwiaWF0IjoxNTQ0MzI4NDYwLCJleHAiOjE1NDY5MjA0NjB9.wIQOg3Yxrs0HlMC0LKGFTkgGXTCJXPsQbdx7qQsR3YI',
+  uid: '603e7b98-fa52-11e8-8644-d1e6d1ba128b',
+  updatedAt: '2018-12-09 05:07:40.635+01',
+  deletedAt: null,
+  createdAt: '2018-12-07 22:55:09.08+01',
+}

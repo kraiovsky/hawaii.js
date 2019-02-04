@@ -1,0 +1,14 @@
+{
+  "name": "@hypefight/request-id",
+  "description": "",
+  "keywords": [],
+  "repository": "",
+  "author": "Roman Krayovskyy",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {
+    "uuid": "^3.3.2"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@hypefight/email-client",
+  "description": "",
+  "keywords": [],
+  "repository": "",
+  "author": "Roman Krayovskyy",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "nodemailer": "^5.1.1"
+  }
+}

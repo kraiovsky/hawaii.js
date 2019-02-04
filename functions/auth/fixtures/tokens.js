@@ -1,0 +1,30 @@
+module.exports = [
+  {
+    refreshToken:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwYzFmM2VhYi0wZjM0LTRlZWYtODhiNy1mMGQ1ZWZkYjYyYTciLCJlbWFpbCI6InVzZXIzQGRvbWFpbi5jb20iLCJzY29wZSI6InVzZXIiLCJpYXQiOjE1NDQ4Nzk4NzQsImV4cCI6MTU0NzQ3MTg3NH0.9umXAN3Bc9bNxzb-Lk-D0KmhY-S99wAGMQEYaVql9EE',
+    uid: '0c1f3eab-0f34-4eef-88b7-f0d5efdb62a7',
+    updatedAt: '2018-12-15 14:17:54.329+01',
+    createdAt: '2018-12-15 14:17:54.329+01',
+  },
+  {
+    refreshToken:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwZmYyZGFmMi03ODE0LTQzMzYtYTJkMi1mYzA4Zjg1OTAwNmIiLCJlbWFpbCI6ImFkbWluQGRvbWFpbi5jb20iLCJzY29wZSI6ImFkbWluIiwiaWF0IjoxNTQ0ODc4NzU1LCJleHAiOjE1NDc0NzA3NTV9.S7fTMwHLbDitDIwWxsLHbW3laaAupavwH2GE3edZgRI',
+    uid: '0ff2daf2-7814-4336-a2d2-fc08f859006b',
+    updatedAt: '2018-12-15 13:59:15.798+01',
+    createdAt: '2018-12-15 13:44:57.205+01',
+  },
+  {
+    refreshToken:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIxOTE5MmUyMC1mYTZkLTExZTgtOTY4NS03YmIwZTI0NTVlZTYiLCJlbWFpbCI6InVzZXIxQGRvbWFpbi5jb20iLCJzY29wZSI6InVzZXIiLCJpYXQiOjE1NDQyMjA3MTEsImV4cCI6MTU0NjgxMjcxMX0.qSZQ287r3yj1pSMPYjXFltapgMRfaKWUlaZLnb_fDI0',
+    uid: '19192e20-fa6d-11e8-9685-7bb0e2455ee6',
+    updatedAt: '2018-12-07 23:11:51.492+01',
+    createdAt: '2018-12-07 23:11:51.492+01',
+  },
+  {
+    refreshToken:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIzMjRiYTVjZC1iOThjLTQ2NGMtOGNkYS00Y2YxZjU3MGM3NTgiLCJlbWFpbCI6InVzZXI4QGRvbWFpbi5jb20iLCJzY29wZSI6InVzZXIiLCJpYXQiOjE1NDQ4ODA1NDMsImV4cCI6MTU0NzQ3MjU0M30.wMQvFTxeFjQqUSNQnhOX8FpXCo_AdYEFvC5fzhrKang',
+    uid: '324ba5cd-b98c-464c-8cda-4cf1f570c758',
+    updatedAt: '2018-12-15 14:29:03.964+01',
+    createdAt: '2018-12-15 14:29:03.964+01',
+  },
+]

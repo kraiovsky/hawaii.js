@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createUser() 👍 should set state with jwtClaim of existing user 1`] = `
+Object {
+  "email": "email@domain.com",
+  "scope": "user",
+  "uid": "0ae76c84-d939-456d-bb35-f60b7659ed6b",
+}
+`;
+
+exports[`createUser() 👍 should set state with jwtClaim of new user 1`] = `
+Object {
+  "email": "new@email.com",
+  "scope": "user",
+  "uid": "e9ad2f8f-b871-4048-95ff-29577f4285f5",
+}
+`;
+
+exports[`genClaimFromToken() GET /confirm 👎 should fail with incorrect token message 1`] = `
+Object {
+  "body": Object {
+    "errors": Array [
+      Object {
+        "detail": Object {
+          "message": "jwt malformed",
+          "name": "JsonWebTokenError",
+        },
+        "status": 500,
+        "title": "AUTH_INCORRECT_REFRESH_TOKEN",
+      },
+    ],
+  },
+  "status": 500,
+}
+`;
+
+exports[`updateToken() 👎 should fail update query if no current refreshToken provided 1`] = `
+Object {
+  "body": Object {
+    "errors": Array [
+      Object {
+        "detail": "ctx.fail called",
+        "status": 500,
+        "title": "AUTH_INCORRECT_REFRESH_TOKEN",
+      },
+    ],
+  },
+  "status": 500,
+}
+`;
+
+exports[`updateToken() 👎 should fail update query if no new refreshToken provided 1`] = `
+Object {
+  "body": Object {
+    "errors": Array [
+      Object {
+        "detail": "ctx.fail called",
+        "status": 500,
+        "title": "AUTH_INCORRECT_REFRESH_TOKEN",
+      },
+    ],
+  },
+  "status": 500,
+}
+`;
+
+exports[`updateToken() 👎 should fail update query if no uid provided 1`] = `
+Object {
+  "body": Object {
+    "errors": Array [
+      Object {
+        "detail": "ctx.fail called",
+        "status": 500,
+        "title": "AUTH_INCORRECT_REFRESH_TOKEN",
+      },
+    ],
+  },
+  "status": 500,
+}
+`;
+
+exports[`updateToken() 👎 should not match refreshToken, fail and respond with auth error 1`] = `
+Object {
+  "body": Object {
+    "errors": Array [
+      Object {
+        "detail": "ctx.fail called",
+        "status": 500,
+        "title": "AUTH_INCORRECT_REFRESH_TOKEN",
+      },
+    ],
+  },
+  "status": 500,
+}
+`;
+
+exports[`updateToken() 👎 should not match uid, fail and respond with auth error 1`] = `
+Object {
+  "body": Object {
+    "errors": Array [
+      Object {
+        "detail": "ctx.fail called",
+        "status": 500,
+        "title": "AUTH_INCORRECT_REFRESH_TOKEN",
+      },
+    ],
+  },
+  "status": 500,
+}
+`;
+
+exports[`upsertToken() 👎 should fail upsert query if no token provided 1`] = `
+Object {
+  "body": Object {
+    "errors": Array [
+      Object {
+        "detail": "token upsert failed",
+        "status": 500,
+        "title": "INTERNAL_SERVER_ERROR",
+      },
+    ],
+  },
+  "status": 500,
+}
+`;
+
+exports[`upsertToken() 👎 should fail upsert query if no uid provided 1`] = `
+Object {
+  "body": Object {
+    "errors": Array [
+      Object {
+        "detail": "token upsert failed",
+        "status": 500,
+        "title": "INTERNAL_SERVER_ERROR",
+      },
+    ],
+  },
+  "status": 500,
+}
+`;

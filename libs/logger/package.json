@@ -1,0 +1,17 @@
+{
+  "name": "@hypefight/logger",
+  "description": "",
+  "keywords": [],
+  "repository": "",
+  "author": "Roman Krayovskyy",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "extend": "^3.0.2",
+    "humanize-number": "github:component/humanize-number",
+    "just-pick": "^2.1.0"
+  }
+}

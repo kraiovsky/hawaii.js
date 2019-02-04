@@ -1,0 +1,19 @@
+{
+  "name": "@hypefight/json-api-schema-generator",
+  "description": "",
+  "keywords": [],
+  "repository": "",
+  "author": "Roman Krayovskyy",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn jest"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}

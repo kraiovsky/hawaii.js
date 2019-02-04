@@ -1,0 +1,4 @@
+dev:
+  NODE_ENV: development
+  DB_PASSWORD: null
+  AUTH_JWT_SECRET: mysecretkey

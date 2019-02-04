@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`serializeFields()  👍 should return array of field names passed in query 1`] = `
+Array [
+  "name",
+  "test",
+]
+`;
+
+exports[`serializeFields()  👍 should return array of field names passed in query, clearing empty elements 1`] = `
+Array [
+  "name",
+  "test",
+]
+`;
+
+exports[`serializeFields()  👍 should return array with one element if only one field name passed 1`] = `
+Array [
+  "name",
+]
+`;
+
+exports[`serializeFields()  👍 should return empty array if empty field passed in query 1`] = `Array []`;
+
+exports[`serializeFields()  👍 should return empty array if no field passed in query 1`] = `Array []`;

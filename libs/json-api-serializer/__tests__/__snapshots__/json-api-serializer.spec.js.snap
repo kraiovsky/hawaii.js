@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Serializer() 👍 should return serialized user with meta 1`] = `
+Object {
+  "data": Object {
+    "attributes": Object {
+      "email": "email2@domain.com",
+      "role": "user",
+    },
+    "id": "0ae76c84-d939-456d-bb35-f60b7659ed6b",
+    "links": Object {
+      "self": "/users/0ae76c84-d939-456d-bb35-f60b7659ed6b",
+    },
+    "relationships": undefined,
+    "type": "user",
+  },
+  "included": undefined,
+  "jsonapi": Object {
+    "version": "1.0",
+  },
+  "links": Object {
+    "index": "/users",
+  },
+  "meta": Object {
+    "meta": "object",
+  },
+}
+`;
+
+exports[`Serializer() 👎 should return empty user and empty meta 1`] = `
+Object {
+  "data": null,
+  "included": undefined,
+  "jsonapi": Object {
+    "version": "1.0",
+  },
+  "links": Object {
+    "index": "/users",
+  },
+  "meta": undefined,
+}
+`;

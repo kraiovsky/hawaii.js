@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createUser() 👍 should return existing user 1`] = `
+Object {
+  "body": Object {
+    "data": Object {
+      "attributes": Object {
+        "avatar": "http://lorempixel.com/800/800/avatar?66700",
+        "email": "email@domain.com",
+        "name": "Test",
+        "role": "user",
+      },
+      "id": "0ae76c84-d939-456d-bb35-f60b7659ed6b",
+      "links": Object {
+        "self": "/users/0ae76c84-d939-456d-bb35-f60b7659ed6b",
+      },
+      "relationships": undefined,
+      "type": "user",
+    },
+    "included": undefined,
+    "jsonapi": Object {
+      "version": "1.0",
+    },
+    "links": Object {
+      "index": "/users",
+    },
+    "meta": undefined,
+  },
+  "status": 200,
+}
+`;
+
+exports[`createUser() 👍 should return new user 1`] = `
+Object {
+  "body": Object {
+    "data": Object {
+      "attributes": Object {
+        "avatar": null,
+        "email": "newemail@domain.com",
+        "name": null,
+        "role": "user",
+      },
+      "id": "e9ad2f8f-b871-4048-95ff-29577f4285f5",
+      "links": Object {
+        "self": "/users/e9ad2f8f-b871-4048-95ff-29577f4285f5",
+      },
+      "relationships": undefined,
+      "type": "user",
+    },
+    "included": undefined,
+    "jsonapi": Object {
+      "version": "1.0",
+    },
+    "links": Object {
+      "index": "/users",
+    },
+    "meta": undefined,
+  },
+  "status": 201,
+}
+`;
+
+exports[`findUser() 👍 should return user with all non-blacklisted if empty field provided in query 1`] = `
+Object {
+  "body": Object {
+    "data": Object {
+      "attributes": Object {
+        "avatar": "http://lorempixel.com/800/800/avatar?66700",
+        "email": "email@domain.com",
+        "name": "Test",
+        "role": "user",
+      },
+      "id": "0ae76c84-d939-456d-bb35-f60b7659ed6b",
+      "links": Object {
+        "self": "/users/0ae76c84-d939-456d-bb35-f60b7659ed6b",
+      },
+      "relationships": undefined,
+      "type": "user",
+    },
+    "included": undefined,
+    "jsonapi": Object {
+      "version": "1.0",
+    },
+    "links": Object {
+      "index": "/users",
+    },
+    "meta": undefined,
+  },
+  "status": 200,
+}
+`;
+
+exports[`findUser() 👍 should return user with all non-blacklisted if no field provided in query 1`] = `
+Object {
+  "body": Object {
+    "data": Object {
+      "attributes": Object {
+        "avatar": "http://lorempixel.com/800/800/avatar?66700",
+        "email": "email@domain.com",
+        "name": "Test",
+        "role": "user",
+      },
+      "id": "0ae76c84-d939-456d-bb35-f60b7659ed6b",
+      "links": Object {
+        "self": "/users/0ae76c84-d939-456d-bb35-f60b7659ed6b",
+      },
+      "relationships": undefined,
+      "type": "user",
+    },
+    "included": undefined,
+    "jsonapi": Object {
+      "version": "1.0",
+    },
+    "links": Object {
+      "index": "/users",
+    },
+    "meta": undefined,
+  },
+  "status": 200,
+}
+`;
+
+exports[`findUser() 👍 should return user with email and name 1`] = `
+Object {
+  "body": Object {
+    "data": Object {
+      "attributes": Object {
+        "email": "email@domain.com",
+        "name": "Test",
+      },
+      "id": "0ae76c84-d939-456d-bb35-f60b7659ed6b",
+      "links": Object {
+        "self": "/users/0ae76c84-d939-456d-bb35-f60b7659ed6b",
+      },
+      "relationships": undefined,
+      "type": "user",
+    },
+    "included": undefined,
+    "jsonapi": Object {
+      "version": "1.0",
+    },
+    "links": Object {
+      "index": "/users",
+    },
+    "meta": undefined,
+  },
+  "status": 200,
+}
+`;

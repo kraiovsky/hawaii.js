@@ -1,0 +1,53 @@
+{
+  "name": "@hypefight/users",
+  "description": "",
+  "keywords": [],
+  "repository": "",
+  "author": "Roman Krayovskyy",
+  "private": true,
+  "version": "0.0.1",
+  "main": "index.js",
+  "bin": {
+    "sls": "./node_modules/.bin/sls"
+  },
+  "scripts": {
+    "start:server": "nodemon",
+    "start:server:debug": "nodemon --inspect",
+    "start:sls": "sls env generate && sls offline start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@hypefight/auth-client": "^0.0.1",
+    "@hypefight/config": "^0.0.1",
+    "@hypefight/database": "^0.0.1",
+    "@hypefight/error-handler": "^0.0.1",
+    "@hypefight/json-api-schema-generator": "^0.0.1",
+    "@hypefight/json-api-serializer": "^0.0.1",
+    "@hypefight/logger": "^0.0.1",
+    "@hypefight/req-res-validator": "^0.0.1",
+    "@hypefight/request-id": "^0.0.1",
+    "@koa/cors": "2",
+    "config": "^3.0.1",
+    "dotenv": "^6.0.0",
+    "joi": "^14.3.0",
+    "koa": "^2.5.0",
+    "koa-compose": "^4.1.0",
+    "koa-helmet": "^4.0.0",
+    "koa-joi-router": "^5.1.0",
+    "koa-respond": "^2.1.0",
+    "serverless-http": "^1.6.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@hypefight/test-helpers": "^0.0.1",
+    "@shopify/jest-koa-mocks": "^2.1.0",
+    "faker": "^4.1.0",
+    "jest": "^24.0.0",
+    "nock": "^10.0.1",
+    "nodemon": "^1.17.1",
+    "serverless": "^1.32.0",
+    "serverless-dotenv-plugin": "^2.0.1",
+    "serverless-env-generator": "^1.1.2",
+    "serverless-offline": "^4.1.4"
+  }
+}
