@@ -5,7 +5,8 @@ const slsPagesDir = '../.next/serverless/pages'
 
 router.get('*', async ctx => {
   try {
-    await require(slsPagesDir + ctx.req._parsedUrl.pathname).render(ctx.req, ctx.res)
+    const pathname = ctx.req._parsedUrl.pathname
+    await require(slsPagesDir + pathname).render(ctx.req, ctx.res)
   } catch (err) {
     await require(slsPagesDir + '/_error').render(ctx.req, ctx.res)
   }
