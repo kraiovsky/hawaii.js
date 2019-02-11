@@ -101,6 +101,14 @@
         "title": "Logger readme",
         "sidebar_label": "Readme"
       },
+      "libs/next-koa/next-koa-changelog": {
+        "title": "Next-koa changelog",
+        "sidebar_label": "Changelog"
+      },
+      "libs/next-koa/next-koa-readme": {
+        "title": "Next-koa readme",
+        "sidebar_label": "Readme"
+      },
       "libs/req-res-validator/req-res-validator-changelog": {
         "title": "Req-res-validator changelog",
         "sidebar_label": "Changelog"
