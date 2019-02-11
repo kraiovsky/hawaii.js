@@ -18,6 +18,9 @@
 # next.js
 **/.next
 
+# static assets for web - to be served from S3 in prod
+/clients/web/assets
+
 # misc
 .DS_Store
 
