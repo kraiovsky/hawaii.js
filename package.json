@@ -13,7 +13,8 @@
   "workspaces": [
     "functions/*",
     "libs/*",
-    "clients/*"
+    "clients/*",
+    "website"
   ],
   "devDependencies": {
     "babel-eslint": "^10.0.1",
