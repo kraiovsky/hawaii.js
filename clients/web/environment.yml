@@ -1,2 +1,5 @@
 dev:
+  PORT: 5003
   NODE_ENV: development
+  ASSETS_URL: ./assets
+  PUBLIC_KEY: testtest

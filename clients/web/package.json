@@ -1,5 +1,5 @@
 {
-  "name": "@hawaii.js/web-client",
+  "name": "@hawaii.js/web-client-next",
   "description": "",
   "keywords": [],
   "repository": "",
@@ -11,7 +11,7 @@
     "sls": "./node_modules/.bin/sls"
   },
   "scripts": {
-    "start:dev": "next -p 5003",
+    "start:dev": "sls env generate && nodemon server",
     "start:sls": "next build && sls env generate && sls offline start",
     "build": "next build",
     "test": "jest"
@@ -20,18 +20,20 @@
     "@hypefight/config": "^0.0.1",
     "@hypefight/logger": "^0.0.1",
     "@hypefight/next-koa": "^0.0.1",
-    "config": "^3.0.1",
-    "dotenv": "^6.2.0",
+    "dotenv-webpack": "^1.7.0",
     "koa": "^2.7.0",
     "koa-router": "^7.4.0",
     "koa-static-server": "^1.4.0",
     "next": "^8.0.0-canary.19",
+    "next-env": "^1.0.1",
+    "next-runtime-dotenv": "^1.0.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "serverless-http": "^1.6.0"
   },
   "devDependencies": {
     "jest": "^24.0.0",
+    "nodemon": "^1.18.10",
     "serverless": "^1.32.0",
     "serverless-dotenv-plugin": "^2.0.1",
     "serverless-env-generator": "^1.1.2",

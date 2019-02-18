@@ -11,5 +11,8 @@ export default () => (
       </Link>
     </div>
     <div>About page</div>
+    <div>{process.env.NODE_ENV}</div>
+    <div>{process.env.PUBLIC_KEY}</div>
+    <div>{process.env.PORT}</div>
   </>
 )
