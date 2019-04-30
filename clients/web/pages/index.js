@@ -1,13 +1,9 @@
 import React from 'react'
-import Link from 'next/link'
 
 const Home = () => {
   return (
     <>
-      <p>Welcome to next.js serverless ⚡</p>
-      <Link href="/auth">
-        <a>Authenticate</a>
-      </Link>
+      <h2>Welcome to hawaii.js - your serverless starter kit ⚡</h2>
     </>
   )
 }

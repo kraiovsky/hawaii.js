@@ -1,14 +1,22 @@
 export default (state, action) => {
   switch (action.type) {
-    case 'increment':
+    case 'signin':
       return {
         ...state,
-        count: state.count + 1,
+        auth: {
+          isAuthenticated: true,
+          access_token: action.payload.accessToken,
+          refresh_token: action.payload.refreshToken,
+        },
       }
-    case 'decrement':
+    case 'logout':
       return {
         ...state,
-        count: state.count - 1,
+        auth: {
+          isAuthenticated: false,
+          access_token: null,
+          refresh_token: null,
+        },
       }
     default:
       return state

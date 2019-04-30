@@ -8,6 +8,6 @@ const StateProvider = ({ reducer, initialState, children }) => (
   </StateContext.Provider>
 )
 
-const useStateValue = () => useContext(StateContext)
+const useGlobalState = () => useContext(StateContext)
 
-export { StateProvider, useStateValue }
+export { StateProvider, useGlobalState }

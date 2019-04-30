@@ -1,3 +1,7 @@
 export default {
-  count: 0,
+  auth: {
+    isAuthenticated: false,
+    access_token: null,
+    refresh_token: null,
+  },
 }

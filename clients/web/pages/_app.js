@@ -1,18 +1,24 @@
 import React from 'react'
 import { Container } from 'next/app'
-import Layout from '../components/Layout'
+import Wrapper from '../components/Wrapper'
 import { StateProvider, initialState, reducer } from '../store'
 
 const App = ({ Component, pageProps }) => {
   return (
     <Container>
       <StateProvider initialState={initialState} reducer={reducer}>
-        <Layout>
+        <Wrapper>
           <Component {...pageProps} />
-        </Layout>
+        </Wrapper>
       </StateProvider>
     </Container>
   )
+}
+
+App.getInitialProps = async ({ Component, ctx }) => {
+  return {
+    ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
+  }
 }
 
 export default App
