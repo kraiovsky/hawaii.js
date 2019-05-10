@@ -1,14 +1,16 @@
-import React from 'react'
-import { withAuth } from '../hocs'
+import React, { useEffect } from 'react'
 import NavBar from './NavBar'
+import { useGlobalState, refreshAccessToken } from '../store'
 
-const Wrapper = ({ isAuthenticated, children }) => {
+export default ({ children }) => {
+  const [, dispatch] = useGlobalState()
+  useEffect(() => {
+    refreshAccessToken(dispatch)
+  }, [children])
   return (
     <>
-      <NavBar isAuthenticated={isAuthenticated} />
+      <NavBar />
       <div>{children}</div>
     </>
   )
 }
-
-export default withAuth(Wrapper)

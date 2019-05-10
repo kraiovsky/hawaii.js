@@ -7,6 +7,9 @@ export default (state, action) => {
           isAuthenticated: true,
           access_token: action.payload.accessToken,
           refresh_token: action.payload.refreshToken,
+          scope: action.payload.scope,
+          uid: action.payload.uid,
+          email: action.payload.email,
         },
       }
     case 'logout':

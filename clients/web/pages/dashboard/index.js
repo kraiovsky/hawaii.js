@@ -1,26 +1,13 @@
 import React from 'react'
-import { useGlobalState } from '../../store'
-import redirect from '../../utils/redirect'
+import ProtectedRoute from '../../components/ProtectedRoute'
+import { ROLES } from '../../constants'
 
-const Dashboard = ctx => {
-  const [
-    {
-      auth: { isAuthenticated },
-    },
-  ] = useGlobalState()
-  console.log(ctx)
-  return !isAuthenticated ? (
-    // redirect(ctx, '/')
-    <></>
-  ) : (
-    <>
+const Dashboard = () => {
+  return (
+    <ProtectedRoute scope={ROLES.USER}>
       <h2>Dashboard</h2>
-    </>
+    </ProtectedRoute>
   )
-}
-
-Dashboard.getInitialProps = ctx => {
-  return ctx
 }
 
 export default Dashboard

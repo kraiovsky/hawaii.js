@@ -3,5 +3,6 @@ export default {
     isAuthenticated: false,
     access_token: null,
     refresh_token: null,
+    scope: null,
   },
 }

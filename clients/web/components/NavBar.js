@@ -1,37 +1,11 @@
+import React from 'react'
 import Link from 'next/link'
-import { useGlobalState, logout } from '../store'
+import { useGlobalState } from '../store'
+import LoginSignup from './LoginSignup'
+import Logout from './Logout'
 
-const NavBar = ({ isAuthenticated }) => {
-  const [, dispatch] = useGlobalState()
-
-  let authLink = isAuthenticated ? (
-    <>
-      <Link href="#">
-        <a onClick={() => logout(dispatch)}>Log out</a>
-      </Link>
-    </>
-  ) : (
-    <>
-      <Link href="/auth">
-        <a>Login</a>
-      </Link>
-      {' | '}
-      <Link href="/auth">
-        <a>Signup</a>
-      </Link>
-    </>
-  )
-
-  let dashboardLink = isAuthenticated ? (
-    <>
-      <Link href="/dashboard">
-        <a>Dashboard</a>
-      </Link>
-      {' | '}
-    </>
-  ) : (
-    <></>
-  )
+const NavBar = () => {
+  const [{ auth }] = useGlobalState()
 
   return (
     <>
@@ -39,9 +13,22 @@ const NavBar = ({ isAuthenticated }) => {
         <Link prefetch href="/">
           <a>Home</a>
         </Link>
-        {' | '}
-        {dashboardLink}
-        {authLink}
+        {auth.isAuthenticated && (
+          <>
+            {' | '}
+            <Link href="/dashboard">
+              <a>Dashboard</a>
+            </Link>
+            {' | '}
+            <Logout />
+          </>
+        )}
+        {auth && !auth.isAuthenticated && (
+          <>
+            {' | '}
+            <LoginSignup />
+          </>
+        )}
       </div>
     </>
   )
