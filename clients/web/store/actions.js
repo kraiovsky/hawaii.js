@@ -19,11 +19,9 @@ export const refreshAccessToken = async dispatch => {
           const { access_token: accessToken, refresh_token: refreshToken } = res.data()
           saveAuthTokens(accessToken, refreshToken, dispatch)
           return true
-        } else {
-          return false
         }
       })
-      .catch(() => false)
+      .catch(() => logout(dispatch))
   }
   logout(dispatch)
 }
