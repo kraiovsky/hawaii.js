@@ -6,6 +6,7 @@
   },
   "scripts": {
     "server": "node ./cli/cmds/server",
+    "client": "node ./cli/cmds/client",
     "docs": "node ./cli/cmds/docs",
     "db": "node ./cli/cmds/db",
     "repo": "node ./cli/cmds/repo"
