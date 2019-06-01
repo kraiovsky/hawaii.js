@@ -16,6 +16,7 @@ export default ({ children }) => {
           {PROJECT_NAME} - {pageTitle}
         </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="icon" type="image/ico" href="/static/favicon.ico" />
       </Head>
       <NavBar />
       <div>{children}</div>
