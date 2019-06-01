@@ -6396,6 +6396,11 @@ junk@^1.0.1:
   resolved "https://registry.yarnpkg.com/junk/-/junk-1.0.3.tgz#87be63488649cbdca6f53ab39bec9ccd2347f592"
   integrity sha1-h75jSIZJy9ym9Tqzm+yczSNH9ZI=
 
+just-is-empty@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/just-is-empty/-/just-is-empty-2.0.1.tgz#a1b7f23748fd939179ad658c2012abbef38be79e"
+  integrity sha512-c05XqAnVCLRrd5u8WnKrUKjVsjQHAF8mI1fVUWvnfrAMLFiu/8tWDG/TaKEnQMcQ3YlQPZqdAcsX1gv4G9/Gcw==
+
 just-pick@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/just-pick/-/just-pick-2.1.0.tgz#534553da8d71bf9ff4dc94f432f06201e0c912ca"
