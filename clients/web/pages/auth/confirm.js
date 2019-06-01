@@ -1,32 +1,45 @@
 import React, { useEffect, useState } from 'react'
+import Router from 'next/router'
 import Link from 'next/link'
-import { useGlobalState, confirmMagicLink } from '../../store'
+import { useGlobalState, confirmMagicLink, getIsAuthenticatedUser } from '../../store'
 import MagicLinkInput from '../../components/MagicLinkInput'
 
-const Auth = props => {
-  const [, dispatch] = useGlobalState()
-  const [status, setStatus] = useState()
+const Confirm = props => {
+  const [state, dispatch] = useGlobalState()
   const [token, setToken] = useState(props.token)
+  const [inProgress, setInProgress] = useState(false)
+  const [error, setError] = useState(false)
 
   const handleConfirmMagicLink = async () => {
-    setStatus('validating')
-    const emailConfirmed = await confirmMagicLink(token, dispatch)
-    if (!emailConfirmed) setStatus('error')
+    setError(false)
+    setInProgress(true)
+    if (await confirmMagicLink(token, dispatch)) {
+      Router.push('/dashboard')
+    } else {
+      setInProgress(false)
+      setError(true)
+    }
   }
 
   useEffect(() => {
+    if (getIsAuthenticatedUser(state)) {
+      Router.push('/')
+    }
     if (token) handleConfirmMagicLink()
-  }, [props.token])
+  }, [props.token, state.auth])
 
-  let statusMsg
-  if (status === 'validating') statusMsg = 'Validating magic link...'
-  else if (status === 'error') statusMsg = 'Invalid or expired token, please enter token manually:'
+  const inProgressMsg = 'Validating magic link...'
+  const errorMsg = 'Invalid or expired token.'
 
   return (
     <>
-      <h2>Confirm email</h2>
-      <p>{statusMsg}</p>
+      <h2>Finish your login</h2>
+      <p>
+        <b>Click on the confirmation link or enter the token you have received below:</b>
+      </p>
       <MagicLinkInput handleChange={setToken} handleClick={handleConfirmMagicLink} />
+      <p>{error && errorMsg}</p>
+      <p>{inProgress && inProgressMsg}</p>
       <p>
         Did not receive confirmation email?{' '}
         <Link href="/auth">
@@ -38,8 +51,8 @@ const Auth = props => {
   )
 }
 
-Auth.getInitialProps = ({ query }) => {
+Confirm.getInitialProps = ({ query }) => {
   return { token: query.token }
 }
 
-export default Auth
+export default Confirm

@@ -4,7 +4,7 @@ import { ROLES } from '../../constants'
 
 const Dashboard = () => {
   return (
-    <ProtectedRoute scope={ROLES.USER}>
+    <ProtectedRoute scope={[ROLES.USER, ROLES.ADMIN]}>
       <h2>Dashboard</h2>
     </ProtectedRoute>
   )

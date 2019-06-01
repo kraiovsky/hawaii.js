@@ -1,39 +1,45 @@
 import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
-import { useGlobalState, sendMagicLink } from '../../store'
+import { useGlobalState, sendMagicLink, getIsAuthenticatedUser } from '../../store'
 
 const Auth = () => {
-  const [
-    {
-      auth: { isAuthenticated },
-    },
-    dispatch,
-  ] = useGlobalState()
+  const [state, dispatch] = useGlobalState()
   const [email, setEmail] = useState('')
-  const [status, setStatus] = useState()
+  const [inProgress, setInProgress] = useState(false)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
-    if (isAuthenticated) Router.push('/')
+    if (getIsAuthenticatedUser(state)) {
+      Router.push('/')
+    }
   })
 
   const handleSendClick = async () => {
-    const emailSent = await sendMagicLink(email, dispatch)
-    if (!emailSent) setStatus('error')
+    setError(false)
+    setInProgress(true)
+    if (await sendMagicLink(email, dispatch)) {
+      Router.push('/auth/confirm')
+    } else {
+      setInProgress(false)
+      setError(true)
+    }
   }
 
-  let errorMsg
-  if (status === 'error') errorMsg = 'Failed to send magic link, please try again.'
+  const errorMsg = 'Failed to send magic link, please try again.'
+  const inProgressMsg = 'Sending magic link...'
+
   return (
     <>
       <h2>Authentication</h2>
-      <p>{errorMsg}</p>
+      <p>{error && errorMsg}</p>
+      <p>{inProgress && inProgressMsg}</p>
       <p>
         Email: <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
         <button onClick={handleSendClick}>Send magic link</button>
       </p>
       <p>
-        Received confirmation token? Confirm your email manually{' '}
+        Received confirmation token? Validate it{' '}
         <Link href="/auth/confirm">
           <a>here</a>
         </Link>

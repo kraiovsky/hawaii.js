@@ -1,49 +1,49 @@
-import Router from 'next/router'
 import Cookies from 'js-cookie'
-import jwt from 'jsonwebtoken'
 import { Auth as authApi } from '../api'
+import { decodeRefreshToken, decodeAccessToken } from '../utils/auth'
 
 const saveAuthTokens = (accessToken, refreshToken, dispatch) => {
-  const { exp: refreshTokenExpiration } = jwt.decode(refreshToken)
-  const { exp: accessTokenExpiration, scope, uid, email } = jwt.decode(accessToken)
-  const refreshTokenExpiresIn = new Date(refreshTokenExpiration * 1000)
-  const accessTokenExpiresIn = new Date(accessTokenExpiration * 1000)
-  dispatch({ type: 'signin', payload: { accessToken, refreshToken, scope, uid, email } })
+  const { refreshTokenExpiresIn } = decodeRefreshToken(refreshToken)
+  const { accessTokenExpiresIn, scope, uid, email } = decodeAccessToken(accessToken)
   Cookies.set('access_token', accessToken, { expires: accessTokenExpiresIn })
   Cookies.set('refresh_token', refreshToken, { expires: refreshTokenExpiresIn })
+  dispatch({ type: 'AUTH_SUCCESS', payload: { accessToken, refreshToken, scope, uid, email } })
 }
 
-export const refreshAccessToken = dispatch => {
+export const refreshAccessToken = async dispatch => {
   const refreshToken = Cookies.get('refresh_token')
   if (refreshToken) {
-    authApi.Token.refresh({ body: { refresh_token: refreshToken } }).then(res => {
-      if (res.status() === 200) {
-        const { access_token: accessToken, refresh_token: refreshToken } = res.data()
-        saveAuthTokens(accessToken, refreshToken, dispatch)
-      }
-    })
+    return await authApi.Token.refresh({ body: { refresh_token: refreshToken } })
+      .then(res => {
+        if (res.status() === 200) {
+          const { access_token: accessToken, refresh_token: refreshToken } = res.data()
+          saveAuthTokens(accessToken, refreshToken, dispatch)
+          return true
+        } else {
+          return false
+        }
+      })
+      .catch(() => false)
   }
+  logout(dispatch)
 }
 
-export const sendMagicLink = (email, dispatch) => {
-  return authApi.MagicLink.send({ body: { email } })
+export const sendMagicLink = async (email, dispatch) => {
+  return await authApi.MagicLink.send({ body: { email } })
     .then(res => {
-      if (res.status() === 200 || res.status() === 201) {
-        Router.push('/auth/confirm')
-      } else {
-        return false
-      }
+      const status = res.status()
+      return status === 200 || status === 201
     })
-    .catch(res => false)
+    .catch(() => false)
 }
 
-export const confirmMagicLink = (token, dispatch) => {
-  return authApi.MagicLink.confirm({ token })
+export const confirmMagicLink = async (token, dispatch) => {
+  return await authApi.MagicLink.confirm({ token })
     .then(res => {
       if (res.status() === 200) {
         const { access_token: accessToken, refresh_token: refreshToken } = res.data()
         saveAuthTokens(accessToken, refreshToken, dispatch)
-        Router.push('/dashboard')
+        return true
       } else {
         return false
       }
@@ -52,8 +52,8 @@ export const confirmMagicLink = (token, dispatch) => {
 }
 
 export const logout = dispatch => {
-  dispatch({ type: 'logout' })
+  dispatch({ type: 'AUTH_RESET' })
   Cookies.remove('access_token')
   Cookies.remove('refresh_token')
-  Router.push('/')
+  return true
 }

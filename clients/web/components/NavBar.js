@@ -1,11 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
-import { useGlobalState } from '../store'
+import { useGlobalState, getIsFinished, getIsAuthenticatedUser } from '../store'
 import LoginSignup from './LoginSignup'
 import Logout from './Logout'
 
 const NavBar = () => {
-  const [{ auth }] = useGlobalState()
+  const [state] = useGlobalState()
 
   return (
     <>
@@ -13,20 +13,20 @@ const NavBar = () => {
         <Link prefetch href="/">
           <a>Home</a>
         </Link>
-        {auth.isAuthenticated && (
-          <>
-            {' | '}
-            <Link href="/dashboard">
-              <a>Dashboard</a>
-            </Link>
-            {' | '}
-            <Logout />
-          </>
-        )}
-        {auth && !auth.isAuthenticated && (
+        {' | '}
+        <Link href="/dashboard">
+          <a>Dashboard</a>
+        </Link>
+        {getIsFinished(state, 'auth') && !getIsAuthenticatedUser(state) && (
           <>
             {' | '}
             <LoginSignup />
+          </>
+        )}
+        {getIsFinished(state, 'auth') && getIsAuthenticatedUser(state) && (
+          <>
+            {' | '}
+            <Logout />
           </>
         )}
       </div>

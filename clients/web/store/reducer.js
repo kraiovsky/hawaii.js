@@ -1,10 +1,12 @@
 export default (state, action) => {
   switch (action.type) {
-    case 'signin':
+    case 'AUTH_SUCCESS':
       return {
         ...state,
         auth: {
-          isAuthenticated: true,
+          ...state.auth,
+          isFinished: true,
+          isError: false,
           access_token: action.payload.accessToken,
           refresh_token: action.payload.refreshToken,
           scope: action.payload.scope,
@@ -12,13 +14,15 @@ export default (state, action) => {
           email: action.payload.email,
         },
       }
-    case 'logout':
+    case 'AUTH_RESET':
       return {
         ...state,
         auth: {
-          isAuthenticated: false,
+          isFinished: true,
+          isError: false,
           access_token: null,
           refresh_token: null,
+          scope: null,
         },
       }
     default:

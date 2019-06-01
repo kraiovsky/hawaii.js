@@ -1,6 +1,7 @@
 export default {
   auth: {
-    isAuthenticated: false,
+    isFinished: false,
+    isError: false,
     access_token: null,
     refresh_token: null,
     scope: null,

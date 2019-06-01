@@ -1,15 +1,23 @@
-import React, { useEffect } from 'react'
-import Router from 'next/router'
-import { useGlobalState, refreshAccessToken } from '../store'
+import React from 'react'
+import Link from 'next/link'
+import { useGlobalState, getIsAuthorizedUser, getIsFinished } from '../store'
 
-export default ({ scope = '', children }) => {
-  const [{ auth }, dispatch] = useGlobalState()
+export default ({ scope = [], children }) => {
+  const [state] = useGlobalState()
   let content = <></>
-  useEffect(() => {
-    refreshAccessToken(dispatch)
-    if (!auth.isAuthenticated) Router.push('/auth')
-    if (auth.isAuthenticated && auth.scope !== scope) content = 'access forbidden'
-    else content = <div>{children}</div>
-  }, [auth])
+  if (getIsFinished(state, 'auth') && getIsAuthorizedUser(state, scope)) {
+    content = <div>{children}</div>
+  }
+  if (getIsFinished(state, 'auth') && !getIsAuthorizedUser(state, scope)) {
+    content = (
+      <p>
+        You need to{' '}
+        <Link href="/auth">
+          <a>login</a>
+        </Link>{' '}
+        to access this page.
+      </p>
+    )
+  }
   return content
 }
