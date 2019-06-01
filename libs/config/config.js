@@ -3,6 +3,7 @@ module.exports = {
     projectName: 'Hypefight',
     email: 'mail@hypefight.io',
     usersApiUrl: 'http://localhost:5001/v1/users',
+    webClientUrl: 'http://localhost:5003',
     xReqIdHeader: 'x-request-id',
     accessTokenMaxAge: '5m',
     serviceTokenMaxAge: '20s',
