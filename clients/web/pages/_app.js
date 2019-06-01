@@ -16,9 +16,11 @@ const App = ({ Component, pageProps }) => {
 }
 
 App.getInitialProps = async ({ Component, ctx }) => {
-  return {
-    ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
+  let pageProps = {}
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx)
   }
+  return { pageProps }
 }
 
 export default App
