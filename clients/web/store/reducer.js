@@ -25,6 +25,11 @@ export default (state, action) => {
           scope: null,
         },
       }
+    case 'PAGE_TITLE_CHANGE':
+      return {
+        ...state,
+        pageTitle: action.payload.title,
+      }
     default:
       return state
   }

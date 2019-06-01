@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useGlobalState, setPageTitle } from '../../store'
 import ProtectedRoute from '../../components/ProtectedRoute'
 import { ROLES } from '../../constants'
 
+const pageTitle = 'Dashboard'
+
 const Dashboard = () => {
+  const [, dispatch] = useGlobalState()
+  useEffect(() => {
+    setPageTitle(pageTitle, dispatch)
+  }, [])
+
   return (
     <ProtectedRoute scope={[ROLES.USER, ROLES.ADMIN]}>
       <h2>Dashboard</h2>

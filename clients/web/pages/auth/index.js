@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
-import { useGlobalState, sendMagicLink, getIsAuthenticatedUser } from '../../store'
+import { useGlobalState, sendMagicLink, getIsAuthenticatedUser, setPageTitle } from '../../store'
+
+const pageTitle = 'Signup or Login'
 
 const Auth = () => {
   const [state, dispatch] = useGlobalState()
@@ -10,6 +12,7 @@ const Auth = () => {
   const [error, setError] = useState(false)
 
   useEffect(() => {
+    setPageTitle(pageTitle, dispatch)
     if (getIsAuthenticatedUser(state)) {
       Router.push('/')
     }

@@ -6,4 +6,5 @@ export default {
     refresh_token: null,
     scope: null,
   },
+  pageTitle: '',
 }

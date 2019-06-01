@@ -57,3 +57,7 @@ export const logout = dispatch => {
   Cookies.remove('refresh_token')
   return true
 }
+
+export const setPageTitle = (title = '', dispatch) => {
+  dispatch({ type: 'PAGE_TITLE_CHANGE', payload: { title } })
+}
