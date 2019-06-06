@@ -16,14 +16,15 @@ const Auth = () => {
     if (getIsAuthenticatedUser(state)) {
       Router.push('/')
     }
-  })
+  }, [])
 
   const handleSendClick = async () => {
     setError(false)
     setInProgress(true)
-    if (await sendMagicLink(email, dispatch)) {
+    try {
+      await sendMagicLink(email, dispatch)
       Router.push('/auth/confirm')
-    } else {
+    } catch {
       setInProgress(false)
       setError(true)
     }

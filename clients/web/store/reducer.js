@@ -1,12 +1,21 @@
+import initialState from './state'
+
 export default (state, action) => {
   switch (action.type) {
+    case 'IS_FINISHED_TOGGLE':
+      const { key, value } = action.payload
+      return {
+        ...state,
+        isFinished: {
+          ...state.isFinished,
+          [key]: value,
+        },
+      }
     case 'AUTH_SUCCESS':
       return {
         ...state,
         auth: {
           ...state.auth,
-          isFinished: true,
-          isError: false,
           access_token: action.payload.accessToken,
           refresh_token: action.payload.refreshToken,
           scope: action.payload.scope,
@@ -17,13 +26,7 @@ export default (state, action) => {
     case 'AUTH_RESET':
       return {
         ...state,
-        auth: {
-          isFinished: true,
-          isError: false,
-          access_token: null,
-          refresh_token: null,
-          scope: null,
-        },
+        auth: initialState.auth,
       }
     case 'PAGE_TITLE_CHANGE':
       return {

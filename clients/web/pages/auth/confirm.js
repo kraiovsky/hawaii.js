@@ -15,9 +15,10 @@ const Confirm = props => {
   const handleConfirmMagicLink = async () => {
     setError(false)
     setInProgress(true)
-    if (await confirmMagicLink(token, dispatch)) {
+    try {
+      await confirmMagicLink(token, dispatch)
       Router.push('/dashboard')
-    } else {
+    } catch {
       setInProgress(false)
       setError(true)
     }
@@ -29,7 +30,7 @@ const Confirm = props => {
       Router.push('/')
     }
     if (token) handleConfirmMagicLink()
-  }, [props.token, state.auth])
+  }, [])
 
   const inProgressMsg = 'Validating magic link...'
   const errorMsg = 'Invalid or expired token.'

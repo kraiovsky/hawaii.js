@@ -1,8 +1,8 @@
 const isEmpty = require('just-is-empty')
 
-export const getIsFinished = (state, object) => state[object].isFinished
+export const getIsFinished = (state, key) => state.isFinished[key]
 
-export const getIsError = (state, object) => state[object].isError
+export const getIsError = (state, key) => state[key].isError
 
 export const getIsAuthenticatedUser = state => !isEmpty(state.auth.access_token)
 

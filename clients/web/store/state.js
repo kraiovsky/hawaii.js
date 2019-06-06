@@ -1,10 +1,13 @@
 export default {
+  isFinished: {
+    auth: false,
+  },
   auth: {
-    isFinished: false,
-    isError: false,
     access_token: null,
     refresh_token: null,
     scope: null,
+    uid: null,
+    email: null,
   },
   pageTitle: '',
 }
