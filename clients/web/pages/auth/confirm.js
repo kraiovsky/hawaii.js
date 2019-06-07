@@ -2,17 +2,16 @@ import React, { useEffect, useState } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import { useGlobalState, confirmMagicLink, getIsAuthenticatedUser, setPageTitle } from '../../store'
-import MagicLinkInput from '../../components/MagicLinkInput'
+import ConfirmAuthTokenForm from '../../components/ConfirmAuthTokenForm'
 
 const pageTitle = 'Confirm your login'
 
 const Confirm = props => {
   const [state, dispatch] = useGlobalState()
-  const [token, setToken] = useState(props.token)
   const [inProgress, setInProgress] = useState(false)
   const [error, setError] = useState(false)
 
-  const handleConfirmMagicLink = async () => {
+  const handleConfirmToken = async ({ token }) => {
     setError(false)
     setInProgress(true)
     try {
@@ -29,7 +28,7 @@ const Confirm = props => {
     if (getIsAuthenticatedUser(state)) {
       Router.push('/')
     }
-    if (token) handleConfirmMagicLink()
+    if (props.token) handleConfirmToken(props)
   }, [])
 
   const inProgressMsg = 'Validating magic link...'
@@ -37,13 +36,14 @@ const Confirm = props => {
 
   return (
     <>
-      <h2>Finish your login</h2>
+      <h2>Confirm your email</h2>
       <p>
-        <b>Click on the confirmation link or enter the token you have received below:</b>
+        We have sent you an email. Click on the confirmation link, or paste a confirmation token
+        below.
       </p>
-      <MagicLinkInput handleChange={setToken} handleClick={handleConfirmMagicLink} />
       <p>{error && errorMsg}</p>
       <p>{inProgress && inProgressMsg}</p>
+      <ConfirmAuthTokenForm onSubmit={handleConfirmToken} />
       <p>
         Did not receive confirmation email?{' '}
         <Link href="/auth">

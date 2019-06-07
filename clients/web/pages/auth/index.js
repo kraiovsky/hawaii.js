@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import { useGlobalState, sendMagicLink, getIsAuthenticatedUser, setPageTitle } from '../../store'
+import AuthForm from '../../components/AuthForm'
 
 const pageTitle = 'Signup or Login'
 
 const Auth = () => {
   const [state, dispatch] = useGlobalState()
-  const [email, setEmail] = useState('')
   const [inProgress, setInProgress] = useState(false)
   const [error, setError] = useState(false)
 
@@ -18,7 +18,7 @@ const Auth = () => {
     }
   }, [])
 
-  const handleSendClick = async () => {
+  const handleSendEmail = async ({ email }) => {
     setError(false)
     setInProgress(true)
     try {
@@ -38,10 +38,7 @@ const Auth = () => {
       <h2>Authentication</h2>
       <p>{error && errorMsg}</p>
       <p>{inProgress && inProgressMsg}</p>
-      <p>
-        Email: <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-        <button onClick={handleSendClick}>Send magic link</button>
-      </p>
+      <AuthForm onSubmit={handleSendEmail} />
       <p>
         Received confirmation token? Validate it{' '}
         <Link href="/auth/confirm">

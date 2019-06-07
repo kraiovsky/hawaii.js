@@ -1,10 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
 import { useGlobalState, getIsFinished, getIsAuthenticatedUser } from '../store'
-import LoginSignup from './LoginSignup'
+import LoginSignup from './AuthNav'
 import Logout from './Logout'
 
-const NavBar = () => {
+export default () => {
   const [state] = useGlobalState()
 
   return (
@@ -33,5 +33,3 @@ const NavBar = () => {
     </>
   )
 }
-
-export default NavBar
