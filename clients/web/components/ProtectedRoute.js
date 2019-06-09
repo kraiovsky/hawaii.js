@@ -1,8 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 import { useGlobalState, getIsAuthorizedUser, getIsFinished } from '../store'
 
-export default ({ scope = [], children }) => {
+const ProtectedRoute = ({ scope = [], children }) => {
   const [state] = useGlobalState()
   let content = <></>
   if (getIsFinished(state, 'auth') && getIsAuthorizedUser(state, scope)) {
@@ -21,3 +22,10 @@ export default ({ scope = [], children }) => {
   }
   return content
 }
+
+ProtectedRoute.propTypes = {
+  scope: PropTypes.arrayOf(PropTypes.string).isRequired,
+  children: PropTypes.element.isRequired,
+}
+
+export default ProtectedRoute

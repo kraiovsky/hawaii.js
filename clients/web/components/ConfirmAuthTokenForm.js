@@ -1,8 +1,9 @@
 import React from 'react'
 import { Form, Field } from 'react-final-form'
+import PropTypes from 'prop-types'
 import { required, composeValidators } from '../utils/validators'
 
-export default ({ onSubmit }) => {
+const ConfirmAuthTokenForm = ({ onSubmit }) => {
   return (
     <Form
       onSubmit={onSubmit}
@@ -30,3 +31,9 @@ export default ({ onSubmit }) => {
     />
   )
 }
+
+ConfirmAuthTokenForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+}
+
+export default ConfirmAuthTokenForm

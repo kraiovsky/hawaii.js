@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import Head from 'next/head'
+import PropTypes from 'prop-types'
 import NavBar from './NavBar'
 import { useGlobalState, setOrRefreshAccessToken } from '../store'
 import { PROJECT_NAME } from '../constants'
 
-export default ({ children }) => {
-  const [state, dispatch] = useGlobalState()
+const Wrapper = ({ children }) => {
+  const [{ pageTitle }, dispatch] = useGlobalState()
 
   useEffect(() => {
     setOrRefreshAccessToken(dispatch)
@@ -14,7 +15,7 @@ export default ({ children }) => {
     <>
       <Head>
         <title>
-          {PROJECT_NAME} - {state.pageTitle}
+          {PROJECT_NAME} - {pageTitle}
         </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="icon" type="image/ico" href="/static/favicon.ico" />
@@ -24,3 +25,9 @@ export default ({ children }) => {
     </>
   )
 }
+
+Wrapper.propTypes = {
+  children: PropTypes.element.isRequired,
+}
+
+export default Wrapper
