@@ -22,7 +22,9 @@
     "next": "^8.0.3",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-final-form": "^6.0.1"
+    "react-final-form": "^6.0.1",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "prop-types": "^15.7.2",
