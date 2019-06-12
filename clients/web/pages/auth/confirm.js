@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
-import { useGlobalState, confirmMagicLink, getIsAuthenticatedUser, setPageTitle } from '../../store'
+import { useSelector, useDispatch } from 'react-redux'
+import { confirmMagicLink, getIsAuthenticatedUser, setPageTitle } from '../../store'
 import ConfirmAuthTokenForm from '../../components/ConfirmAuthTokenForm'
 
 const pageTitle = 'Confirm your login'
 
 const Confirm = props => {
-  const [state, dispatch] = useGlobalState()
+  const state = useSelector(state => state)
+  const dispatch = useDispatch()
   const [inProgress, setInProgress] = useState(false)
   const [error, setError] = useState(false)
 
@@ -24,12 +26,13 @@ const Confirm = props => {
   }
 
   useEffect(() => {
+    console.log('a')
     setPageTitle(pageTitle, dispatch)
     if (getIsAuthenticatedUser(state)) {
       Router.push('/')
     }
     if (props.token) handleConfirmToken(props)
-  }, [])
+  })
 
   const inProgressMsg = 'Validating magic link...'
   const errorMsg = 'Invalid or expired token.'

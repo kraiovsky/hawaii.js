@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
 import Head from 'next/head'
+import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 import NavBar from './NavBar'
-import { useGlobalState, setOrRefreshAccessToken } from '../store'
+import { setOrRefreshAccessToken } from '../store'
 import { PROJECT_NAME } from '../constants'
 
 const Wrapper = ({ children }) => {
-  const [{ pageTitle }, dispatch] = useGlobalState()
+  const { pageTitle } = useSelector(state => state)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     setOrRefreshAccessToken(dispatch)

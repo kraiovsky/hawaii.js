@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
-import { useGlobalState, setPageTitle } from '../store'
+import { useDispatch } from 'react-redux'
+import { setPageTitle } from '../store'
 
 const pageTitle = 'your serverless starter kit'
 
 const Home = () => {
-  const [, dispatch] = useGlobalState()
+  const dispatch = useDispatch()
   useEffect(() => {
     setPageTitle(pageTitle, dispatch)
   }, [])

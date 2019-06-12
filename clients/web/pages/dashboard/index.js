@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
-import { useGlobalState, setPageTitle } from '../../store'
+import { useDispatch } from 'react-redux'
+import { setPageTitle } from '../../store'
 import ProtectedRoute from '../../components/ProtectedRoute'
 import { ROLES } from '../../constants'
 
 const pageTitle = 'Dashboard'
 
 const Dashboard = () => {
-  const [, dispatch] = useGlobalState()
+  const dispatch = useDispatch()
   useEffect(() => {
     setPageTitle(pageTitle, dispatch)
   }, [])

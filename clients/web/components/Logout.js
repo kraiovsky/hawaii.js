@@ -1,10 +1,11 @@
 import React from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
-import { useGlobalState, logout } from '../store'
+import { useDispatch } from 'react-redux'
+import { logout } from '../store'
 
 export default () => {
-  const [, dispatch] = useGlobalState()
+  const dispatch = useDispatch()
 
   const handleLogoutClick = async () => {
     if (await logout(dispatch)) {

@@ -1,11 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
-import { useGlobalState, getIsFinished, getIsAuthenticatedUser } from '../store'
+import { useSelector } from 'react-redux'
+import { getIsFinished, getIsAuthenticatedUser } from '../store'
 import LoginSignup from './AuthNav'
 import Logout from './Logout'
 
 export default () => {
-  const [state] = useGlobalState()
+  const state = useSelector(state => state)
 
   return (
     <>

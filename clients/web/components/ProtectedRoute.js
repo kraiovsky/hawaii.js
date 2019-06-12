@@ -1,10 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
+import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
-import { useGlobalState, getIsAuthorizedUser, getIsFinished } from '../store'
+import { getIsAuthorizedUser, getIsFinished } from '../store'
 
 const ProtectedRoute = ({ scope = [], children }) => {
-  const [state] = useGlobalState()
+  const state = useSelector(state => state)
   let content = <></>
   if (getIsFinished(state, 'auth') && getIsAuthorizedUser(state, scope)) {
     content = <div>{children}</div>

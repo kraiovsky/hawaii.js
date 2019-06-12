@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
-import { useGlobalState, sendMagicLink, getIsAuthenticatedUser, setPageTitle } from '../../store'
+import { useSelector, useDispatch } from 'react-redux'
+import { sendMagicLink, getIsAuthenticatedUser, setPageTitle } from '../../store'
 import AuthForm from '../../components/AuthForm'
 
 const pageTitle = 'Signup or Login'
 
 const Auth = () => {
-  const [state, dispatch] = useGlobalState()
+  const state = useSelector(state => state)
+  const dispatch = useDispatch()
   const [inProgress, setInProgress] = useState(false)
   const [error, setError] = useState(false)
 
@@ -16,7 +18,7 @@ const Auth = () => {
     if (getIsAuthenticatedUser(state)) {
       Router.push('/')
     }
-  }, [])
+  })
 
   const handleSendEmail = async ({ email }) => {
     setError(false)

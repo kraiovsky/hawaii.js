@@ -1,6 +1,6 @@
 import initialState from './state'
 
-export default (state, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case 'IS_FINISHED_TOGGLE':
       const { key, value } = action.payload
