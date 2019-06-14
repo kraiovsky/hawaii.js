@@ -1,8 +1,9 @@
 import initialState from './state'
+import { IS_FINISHED_TOGGLE, PAGE_TITLE_CHANGE, AUTH_SUCCESS, AUTH_RESET } from './actionTypes'
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case 'IS_FINISHED_TOGGLE':
+    case IS_FINISHED_TOGGLE:
       const { key, value } = action.payload
       return {
         ...state,
@@ -11,7 +12,7 @@ export default (state = initialState, action) => {
           [key]: value,
         },
       }
-    case 'AUTH_SUCCESS':
+    case AUTH_SUCCESS:
       return {
         ...state,
         auth: {
@@ -23,12 +24,12 @@ export default (state = initialState, action) => {
           email: action.payload.email,
         },
       }
-    case 'AUTH_RESET':
+    case AUTH_RESET:
       return {
         ...state,
         auth: initialState.auth,
       }
-    case 'PAGE_TITLE_CHANGE':
+    case PAGE_TITLE_CHANGE:
       return {
         ...state,
         pageTitle: action.payload.title,
