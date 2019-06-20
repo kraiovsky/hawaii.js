@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
-import { getIsFinished, getIsAuthenticatedUser } from '../store'
+import { getIsFinished, getIsAuthenticatedUser } from '../store/selectors'
 import LoginSignup from './AuthNav'
 import Logout from './Logout'
 

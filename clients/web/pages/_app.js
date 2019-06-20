@@ -1,11 +1,8 @@
 import React from 'react'
 import { Container } from 'next/app'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import store from '../store'
 import Wrapper from '../components/Wrapper'
-import { reducer } from '../store'
-
-const store = createStore(reducer)
 
 const App = ({ Component, pageProps }) => {
   return (

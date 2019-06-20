@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
-import { getIsAuthorizedUser, getIsFinished } from '../store'
+import { getIsAuthorizedUser, getIsFinished } from '../store/selectors'
 
 const ProtectedRoute = ({ scope = [], children }) => {
   const state = useSelector(state => state)

@@ -1,4 +1,4 @@
-import initialState from './state'
+import initialState from './initialState'
 import { IS_FINISHED_TOGGLE, PAGE_TITLE_CHANGE, AUTH_SUCCESS, AUTH_RESET } from './actionTypes'
 
 export default (state = initialState, action) => {

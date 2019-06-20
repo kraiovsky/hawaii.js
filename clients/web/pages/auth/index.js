@@ -3,7 +3,7 @@ import Router from 'next/router'
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
 import { Auth as authApi } from '../../api'
-import { getIsAuthenticatedUser } from '../../store'
+import { getIsAuthenticatedUser } from '../../store/selectors'
 import { setPageTitle } from '../../store/actionCreators'
 import AuthForm from '../../components/AuthForm'
 
