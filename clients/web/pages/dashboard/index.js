@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { setPageTitle } from '../../store'
+import { setPageTitle } from '../../store/actionCreators'
 import ProtectedRoute from '../../components/ProtectedRoute'
 import { ROLES } from '../../constants'
 
@@ -9,8 +9,8 @@ const pageTitle = 'Dashboard'
 const Dashboard = () => {
   const dispatch = useDispatch()
   useEffect(() => {
-    setPageTitle(pageTitle, dispatch)
-  }, [])
+    dispatch(setPageTitle(pageTitle))
+  })
 
   return (
     <ProtectedRoute scope={[ROLES.USER, ROLES.ADMIN]}>

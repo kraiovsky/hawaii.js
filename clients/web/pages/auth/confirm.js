@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
-import { confirmMagicLink, getIsAuthenticatedUser, setPageTitle } from '../../store'
+import { Auth as authApi } from '../../api'
+import { getIsAuthenticatedUser } from '../../store'
+import { setPageTitle, toggleIsFinished, setAuthSuccess } from '../../store/actionCreators'
 import ConfirmAuthTokenForm from '../../components/ConfirmAuthTokenForm'
+import { decodeAuthTokens, setAuthCookies } from '../../utils/auth'
 
 const pageTitle = 'Confirm your login'
 
@@ -14,28 +17,38 @@ const Confirm = props => {
   const [error, setError] = useState(false)
 
   const handleConfirmToken = async ({ token }) => {
-    setError(false)
-    setInProgress(true)
+    await setError(false)
+    await setInProgress(true)
     try {
-      await confirmMagicLink(token, dispatch)
-      Router.push('/dashboard')
+      const res = await authApi.MagicLink.confirm({ token })
+      if (res.status() === 200) {
+        const { access_token: accessToken, refresh_token: refreshToken } = res.data()
+        const authTokensPayload = await decodeAuthTokens(accessToken, refreshToken)
+        await setAuthCookies(authTokensPayload)
+        dispatch(setAuthSuccess(authTokensPayload))
+        dispatch(toggleIsFinished('auth', true))
+        Router.push('/dashboard')
+      } else {
+        await setError(true)
+      }
     } catch {
-      setInProgress(false)
-      setError(true)
+      await setError(true)
     }
+    await setInProgress(false)
   }
 
   useEffect(() => {
-    console.log('a')
-    setPageTitle(pageTitle, dispatch)
+    dispatch(setPageTitle(pageTitle))
+
     if (getIsAuthenticatedUser(state)) {
       Router.push('/')
     }
+
     if (props.token) handleConfirmToken(props)
   })
 
   const inProgressMsg = 'Validating magic link...'
-  const errorMsg = 'Invalid or expired token.'
+  const errorMsg = 'Failed to validate confirmation token, please try again.'
 
   return (
     <>

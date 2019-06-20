@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
-import { sendMagicLink, getIsAuthenticatedUser, setPageTitle } from '../../store'
+import { Auth as authApi } from '../../api'
+import { getIsAuthenticatedUser } from '../../store'
+import { setPageTitle } from '../../store/actionCreators'
 import AuthForm from '../../components/AuthForm'
 
 const pageTitle = 'Signup or Login'
@@ -14,22 +16,27 @@ const Auth = () => {
   const [error, setError] = useState(false)
 
   useEffect(() => {
-    setPageTitle(pageTitle, dispatch)
+    dispatch(setPageTitle(pageTitle))
     if (getIsAuthenticatedUser(state)) {
       Router.push('/')
     }
   })
 
   const handleSendEmail = async ({ email }) => {
-    setError(false)
-    setInProgress(true)
+    await setError(false)
+    await setInProgress(true)
     try {
-      await sendMagicLink(email, dispatch)
-      Router.push('/auth/confirm')
+      const res = await authApi.MagicLink.send({ body: { email } })
+      const status = res.status()
+      if (status === 200 || status === 201) {
+        Router.push('/auth/confirm')
+      } else {
+        await setError(true)
+      }
     } catch {
-      setInProgress(false)
-      setError(true)
+      await setError(true)
     }
+    await setInProgress(false)
   }
 
   const errorMsg = 'Failed to send magic link, please try again.'

@@ -2,15 +2,16 @@ import React from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import { useDispatch } from 'react-redux'
-import { logout } from '../store'
+import { removeAuthCookies } from '../utils/auth'
+import { resetAuth } from '../store/actionCreators'
 
 export default () => {
   const dispatch = useDispatch()
 
   const handleLogoutClick = async () => {
-    if (await logout(dispatch)) {
-      Router.push('/')
-    }
+    await removeAuthCookies()
+    await dispatch(resetAuth)
+    Router.push('/')
   }
   return (
     <>
