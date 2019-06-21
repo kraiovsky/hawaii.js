@@ -19,7 +19,6 @@ const decodeAccessToken = async token => {
 }
 
 export const decodeAuthTokens = async (accessToken, refreshToken) => {
-  console.log(accessToken, refreshToken)
   const { refreshTokenExpiresIn } = await decodeRefreshToken(refreshToken)
   const { accessTokenExpiresIn, scope, uid, email } = await decodeAccessToken(accessToken)
   return {
