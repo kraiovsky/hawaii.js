@@ -14,10 +14,11 @@ const Auth = () => {
   const dispatch = useDispatch()
   const [inProgress, setInProgress] = useState(false)
   const [error, setError] = useState(false)
+  const isAuthenticatedUser = getIsAuthenticatedUser(state)
 
   useEffect(() => {
     dispatch(setPageTitle(pageTitle))
-    if (getIsAuthenticatedUser(state)) {
+    if (isAuthenticatedUser) {
       Router.push('/')
     }
   })
