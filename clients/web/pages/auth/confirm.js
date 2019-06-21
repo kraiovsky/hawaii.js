@@ -5,61 +5,56 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Auth as authApi } from '../../api'
 import { getIsAuthenticatedUser } from '../../store/selectors'
 import { setPageTitle, toggleIsFinished, setAuthSuccess } from '../../store/actionCreators'
-import ConfirmAuthTokenForm from '../../components/ConfirmAuthTokenForm'
 import { decodeAuthTokens, setAuthCookies } from '../../utils/auth'
 
 const pageTitle = 'Confirm your login'
 
-const Confirm = props => {
+const Confirm = ({ token }) => {
   const state = useSelector(state => state)
   const dispatch = useDispatch()
   const [inProgress, setInProgress] = useState(false)
   const [error, setError] = useState(false)
-
-  const handleConfirmToken = async ({ token }) => {
-    await setError(false)
-    await setInProgress(true)
-    try {
-      const res = await authApi.MagicLink.confirm({ token })
-      if (res.status() === 200) {
-        const { access_token: accessToken, refresh_token: refreshToken } = res.data()
-        const authTokensPayload = await decodeAuthTokens(accessToken, refreshToken)
-        await setAuthCookies(authTokensPayload)
-        dispatch(setAuthSuccess(authTokensPayload))
-        dispatch(toggleIsFinished('auth', true))
-        Router.push('/dashboard')
-      } else {
-        await setError(true)
-      }
-    } catch {
-      await setError(true)
-    }
-    await setInProgress(false)
-  }
+  const isAuthenticatedUser = getIsAuthenticatedUser(state)
 
   useEffect(() => {
     dispatch(setPageTitle(pageTitle))
-
-    if (getIsAuthenticatedUser(state)) {
+    if (isAuthenticatedUser) {
       Router.push('/')
     }
+  }, [dispatch, isAuthenticatedUser])
 
-    if (props.token) handleConfirmToken(props)
-  })
+  useEffect(() => {
+    const handleConfirmToken = async token => {
+      await setError(false)
+      await setInProgress(true)
+      try {
+        const res = await authApi.MagicLink.confirm({ token })
+        if (res.status() === 200) {
+          const { access_token: accessToken, refresh_token: refreshToken } = res.data()
+          const authTokensPayload = await decodeAuthTokens(accessToken, refreshToken)
+          await setAuthCookies(authTokensPayload)
+          dispatch(setAuthSuccess(authTokensPayload))
+          dispatch(toggleIsFinished('auth', true))
+          Router.push('/dashboard')
+        } else {
+          await setError(true)
+        }
+      } catch {
+        await setError(true)
+      }
+      await setInProgress(false)
+    }
+    if (token) handleConfirmToken(token)
+  }, [dispatch, token])
 
   const inProgressMsg = 'Validating magic link...'
-  const errorMsg = 'Failed to validate confirmation token, please try again.'
+  const errorMsg = 'Failed to validate confirmation token.'
 
   return (
     <>
-      <h2>Confirm your email</h2>
-      <p>
-        We have sent you an email. Click on the confirmation link, or paste a confirmation token
-        below.
-      </p>
-      <p>{error && errorMsg}</p>
+      <h2>Check your email</h2>
       <p>{inProgress && inProgressMsg}</p>
-      <ConfirmAuthTokenForm onSubmit={handleConfirmToken} />
+      <p>{error && errorMsg}</p>
       <p>
         Did not receive confirmation email?{' '}
         <Link href="/auth">

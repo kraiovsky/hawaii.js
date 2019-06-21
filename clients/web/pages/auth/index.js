@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
-import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
 import { Auth as authApi } from '../../api'
 import { getIsAuthenticatedUser } from '../../store/selectors'
@@ -49,13 +48,6 @@ const Auth = () => {
       <p>{error && errorMsg}</p>
       <p>{inProgress && inProgressMsg}</p>
       <AuthForm onSubmit={handleSendEmail} />
-      <p>
-        Received confirmation token? Validate it{' '}
-        <Link href="/auth/confirm">
-          <a>here</a>
-        </Link>
-        .
-      </p>
     </>
   )
 }
