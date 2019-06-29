@@ -26,16 +26,16 @@
     "@hypefight/logger": "^0.0.1",
     "@hypefight/req-res-validator": "^0.0.1",
     "@hypefight/request-id": "^0.0.1",
-    "@koa/cors": "2",
+    "@koa/cors": "^3.0.0",
     "config": "^3.0.1",
-    "dotenv": "^6.0.0",
+    "dotenv": "^8.0.0",
     "joi": "^14.3.0",
     "koa": "^2.5.0",
     "koa-compose": "^4.1.0",
     "koa-helmet": "^4.0.0",
-    "koa-joi-router": "^5.1.0",
+    "koa-joi-router": "^6.0.0",
     "koa-respond": "^2.1.0",
-    "serverless-http": "^1.6.0",
+    "serverless-http": "^2.0.2",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
@@ -48,6 +48,6 @@
     "serverless": "^1.32.0",
     "serverless-dotenv-plugin": "^2.0.1",
     "serverless-env-generator": "^1.1.2",
-    "serverless-offline": "^4.1.4"
+    "serverless-offline": "^5.5.0"
   }
 }
