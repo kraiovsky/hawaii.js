@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render NavBar Auth init in progress 1`] = `
+<div>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    Home
+  </a>
+   | 
+  <a
+    href="/dashboard"
+    onClick={[Function]}
+  >
+    Dashboard
+  </a>
+</div>
+`;
+
+exports[`Render NavBar 👍 Auth init finished - authenticated user 1`] = `
+<div>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    Home
+  </a>
+   | 
+  <a
+    href="/dashboard"
+    onClick={[Function]}
+  >
+    Dashboard
+  </a>
+   | 
+  <a
+    href="#"
+    onClick={[Function]}
+  >
+    Log out
+  </a>
+</div>
+`;
+
+exports[`Render NavBar 👎 Auth init finished - unauthenticated user 1`] = `
+<div>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    Home
+  </a>
+   | 
+  <a
+    href="/dashboard"
+    onClick={[Function]}
+  >
+    Dashboard
+  </a>
+   | 
+  <a
+    href="/auth"
+    onClick={[Function]}
+  >
+    Login
+  </a>
+   | 
+  <a
+    href="/auth"
+    onClick={[Function]}
+  >
+    Signup
+  </a>
+</div>
+`;

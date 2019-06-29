@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render AuthForm form 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div>
+    <label>
+      Email
+    </label>
+    <input
+      name="email"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="example@email.com"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="buttons"
+  >
+    <button
+      disabled={false}
+      type="submit"
+    >
+      Submit
+    </button>
+    <button
+      disabled={true}
+      onClick={[Function]}
+      type="button"
+    >
+      Reset
+    </button>
+  </div>
+</form>
+`;

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render ProtectedRoute 👍 Authenticated and authorized user 1`] = `
+<div>
+  Protected Route Content
+</div>
+`;
+
+exports[`Render ProtectedRoute 👎 Authenticated but not authorized user 1`] = `
+<p>
+  You need to
+   
+  <a
+    href="/auth"
+    onClick={[Function]}
+  >
+    login
+  </a>
+   
+  to access this page.
+</p>
+`;
+
+exports[`Render ProtectedRoute 👎 Unauthenticated user 1`] = `
+<p>
+  You need to
+   
+  <a
+    href="/auth"
+    onClick={[Function]}
+  >
+    login
+  </a>
+   
+  to access this page.
+</p>
+`;
