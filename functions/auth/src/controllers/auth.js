@@ -169,13 +169,13 @@ const respondWithTokens = () => ctx => {
 const sendMagicLink = () => async ctx => {
   const statusCode = ctx.state.userCreated ? 201 : 200
   const {
-    config: { smtp: smtpConfig, projectName: fromName, email: fromEmail },
+    config: { smtp: smtpConfig, projectName: fromName, email: fromEmail, webClientUrl },
     jwtClaim: { email: toEmail },
     confirmToken: token,
   } = ctx.state
 
   const magicLinkTpl = generateEmail['MAGIC_LINK']
-  const magicLinkMsg = magicLinkTpl(fromName, fromEmail, toEmail, token)
+  const magicLinkMsg = magicLinkTpl(fromName, fromEmail, toEmail, token, webClientUrl)
 
   try {
     await email(magicLinkMsg, smtpConfig)

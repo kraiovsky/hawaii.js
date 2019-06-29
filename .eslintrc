@@ -10,6 +10,7 @@
   ],
   "plugins": [
     "react",
+    "react-hooks",
     "prettier",
     "standard",
     "jest",
@@ -43,7 +44,9 @@
     "jsdoc/require-param-type": 1,
     "jsdoc/require-returns-description": 1,
     "jsdoc/require-returns-type": 1,
-    "jsdoc/valid-types": 0
+    "jsdoc/valid-types": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "env":{
     "jest": true,

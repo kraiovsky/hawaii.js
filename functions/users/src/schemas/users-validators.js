@@ -11,7 +11,9 @@ const USER = Joi.object()
     }),
     attributes: Joi.object()
       .keys({
-        email: Joi.string(),
+        email: Joi.string()
+          .lowercase()
+          .email({ minDomainAtoms: 2 }),
         name: Joi.string().allow(null),
         avatar: Joi.string()
           .uri()

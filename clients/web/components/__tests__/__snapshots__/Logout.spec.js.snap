@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Logout link for the nav bar 1`] = `
+<a
+  href="#"
+  onClick={[Function]}
+>
+  Log out
+</a>
+`;
