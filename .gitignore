@@ -15,6 +15,9 @@
 # production
 **/build
 
+# nextjs builds
+/clients/**/.next
+
 # misc
 .DS_Store
 
