@@ -30,6 +30,7 @@
   "devDependencies": {
     "jest": "^24.8.0",
     "prop-types": "^15.7.2",
+    "react-test-renderer": "^16.8.6",
     "serverless": "^1.38.0",
     "serverless-nextjs-plugin": "^1.1.7"
   }
