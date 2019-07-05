@@ -7,7 +7,9 @@
   "version": "0.0.1",
   "private": true,
   "main": "index.js",
-  "scripts": {},
+  "workspaces": {
+    "nohoist": ["**"]
+  },
   "dependencies": {
     "uuid": "^3.3.2"
   }

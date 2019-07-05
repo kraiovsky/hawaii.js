@@ -7,14 +7,11 @@
   "version": "0.0.1",
   "private": true,
   "main": "index.js",
-  "scripts": {
-
+  "workspaces": {
+    "nohoist": ["**"]
   },
   "dependencies": {
     "@hypefight/error-handler": "^0.0.1",
     "joi": "^14.3.1"
-  },
-  "devDependencies": {
-
   }
 }

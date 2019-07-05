@@ -10,6 +10,9 @@
   "scripts": {
     "test": "yarn jest"
   },
+  "workspaces": {
+    "nohoist": ["**"]
+  },
   "dependencies": {
     "@hypefight/test-helpers": "^0.0.1",
     "json-api-serializer": "^1.13.0"

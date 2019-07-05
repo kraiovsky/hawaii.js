@@ -7,6 +7,9 @@
   "version": "0.0.1",
   "private": true,
   "main": "index.js",
+  "workspaces": {
+    "nohoist": ["**"]
+  },
   "dependencies": {
     "nodemailer": "^6.2.1"
   }
