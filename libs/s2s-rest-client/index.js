@@ -19,7 +19,6 @@ module.exports = serviceUrlConfigKey => ctx => {
       config: { [serviceUrlConfigKey]: url, requestIdHeader },
     },
   } = ctx
-  console.log(url)
   const requestId = ctx.response.get(requestIdHeader)
   return got.extend({
     baseUrl: url,
