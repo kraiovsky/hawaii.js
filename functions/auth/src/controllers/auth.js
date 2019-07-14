@@ -17,17 +17,21 @@ const generateEmail = require('../../email-templates')
  * @returns {Promise} Save new or existing user data and whether it was created in ctx state, and pass down to the next middleware.
  */
 const createUser = () => async (ctx, next) => {
-  const user = await User.create(ctx.request.body, ctx.state)
-  ctx.state = {
-    ...ctx.state,
-    userCreated: user.created,
-    jwtClaim: {
-      uid: user.data.data.id,
-      email: user.data.data.attributes.email,
-      scope: user.data.data.attributes.role,
-    },
+  try {
+    const { body, statusCode } = await User.create(ctx)
+    ctx.state = {
+      ...ctx.state,
+      userCreated: statusCode === 201,
+      jwtClaim: {
+        uid: body.data.id,
+        email: body.data.attributes.email,
+        scope: body.data.attributes.role,
+      },
+    }
+    await next()
+  } catch (err) {
+    ctx.fail({ info: err })
   }
-  await next()
 }
 
 /**

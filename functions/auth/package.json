@@ -25,6 +25,7 @@
     "@hypefight/logger": "^0.0.1",
     "@hypefight/req-res-validator": "^0.0.1",
     "@hypefight/request-id": "^0.0.1",
+    "@hypefight/s2s-rest-client": "^0.0.1",
     "@koa/cors": "^3.0.0",
     "config": "^3.0.1",
     "dotenv": "^8.0.0",
