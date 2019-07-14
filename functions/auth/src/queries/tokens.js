@@ -12,15 +12,17 @@ const Token = require('../models/tokens')
  *
  * @returns {object} Inserted or updated token record.
  */
-const upsert = ctx => {
+const upsert = async ctx => {
   const item = new Token({
     uid: ctx.state.jwtClaim.uid,
     refreshToken: ctx.state.refreshToken,
   })
-  item.save(err => {
-    if (err) ctx.fail({ info: err })
+  try {
+    await item.save()
     return true
-  })
+  } catch (err) {
+    ctx.fail({ info: err })
+  }
 }
 
 /**
