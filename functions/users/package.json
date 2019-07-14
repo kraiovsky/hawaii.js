@@ -13,7 +13,7 @@
   "scripts": {
     "start:server": "nodemon",
     "start:server:debug": "nodemon --inspect",
-    "start:sls": "sls env generate && sls offline start",
+    "start:sls": "sls offline start",
     "test": "jest"
   },
   "dependencies": {
