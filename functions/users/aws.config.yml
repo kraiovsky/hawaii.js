@@ -1,0 +1,44 @@
+# DEVELOPMENT ENV
+development:
+  LAMBDA:
+    USAGE_PLAN:
+      quota:
+        limit: 5000
+        offset: 2
+        period: MONTH
+      throttle:
+        burstLimit: 200
+        rateLimit: 100
+  DYNAMODB:
+    USERS_TABLE:
+      TABLE_THROUGHPUT:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      ID_GLOBAL_INDEX_THROUGHPUT:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+
+# PRODUCTION ENV
+production:
+  LAMBDA:
+    USAGE_PLAN:
+      quota:
+        limit: 5000
+        offset: 2
+        period: MONTH
+      throttle:
+        burstLimit: 200
+        rateLimit: 100
+  DYNAMODB:
+    USERS_TABLE:
+      TABLE_THROUGHPUT:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      ID_GLOBAL_INDEX_THROUGHPUT:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+
+# KMS Keys for serverless-env-generator plugin
+KMS_KEY_ID:
+  development: null
+  production: null
