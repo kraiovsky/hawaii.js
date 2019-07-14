@@ -9,7 +9,8 @@
     "client": "node ./cli/cmds/client",
     "docs": "node ./cli/cmds/docs",
     "db": "node ./cli/cmds/db",
-    "repo": "node ./cli/cmds/repo"
+    "repo": "node ./cli/cmds/repo",
+    "sls": "node ./cli/cmds/sls"
   },
   "workspaces": [
     "functions/*",
