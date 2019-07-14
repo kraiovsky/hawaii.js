@@ -1,20 +1,16 @@
-module.exports = {
-  development: {
-    projectName: 'Hypefight',
-    email: 'mail@hypefight.io',
-    usersApiUrl: 'http://localhost:5001/v1/users',
-    webClientUrl: 'http://localhost:5003',
-    xReqIdHeader: 'x-request-id',
-    accessTokenMaxAge: '5m',
-    serviceTokenMaxAge: '20s',
-    smtp: {
-      host: 'smtp.ethereal.email',
-      port: 587,
-      secure: '',
-      auth: {
-        user: 'nc5oh62o3vf455cy@ethereal.email',
-        pass: '2QRjWypntsPve5nXPF',
-      },
+module.exports = () => {
+  const config = {
+    development: {
+      projectName: 'Hawaii.js',
+      requestIdHeader: 'x-request-id',
+      serviceTokenMaxAge: '20s',
     },
-  },
+    production: {
+      projectName: 'Hawaii.js',
+      requestIdHeader: 'x-request-id',
+      serviceTokenMaxAge: '20s',
+    },
+  }
+  const env = process.env.NODE_ENV || 'development'
+  return config[env]
 }

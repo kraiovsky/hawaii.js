@@ -1,6 +1,9 @@
 const uuid = require('uuid/v4')
+const config = require('config')
 const Model = require('@hypefight/database')
 const dbConfig = require('../../config/database')()
+
+const tableName = config.get('dbUsersTableName')
 
 const modelSchema = {
   email: {
@@ -39,4 +42,4 @@ const modelOptions = {
   timestamps: true,
 }
 
-module.exports = Model('Users', modelSchema, modelOptions, dbConfig)
+module.exports = Model(tableName, modelSchema, modelOptions, dbConfig)

@@ -1,4 +1,16 @@
-dev:
+# DEVELOPMENT ENV
+development:
   NODE_ENV: development
-  DB_PASSWORD: null
+  SERVICE_NAME: users
+  PORT: 5001
   AUTH_JWT_SECRET: mysecretkey
+  DB_USERS_TABLE_NAME: users-users-development
+
+# PRODUCTION ENV
+production:
+  NODE_ENV: production
+  SERVICE_NAME: users
+  AUTH_JWT_SECRET: mysecretkey
+  AWS_AKID: null # to be defined with secrets manager
+  AWS_SAK: null # to be defined with secrets manager
+  DB_USERS_TABLE_NAME: users-users-production
