@@ -2,7 +2,7 @@
  * @file Unique request id generation utility.
  * Uses UUID V4 to generate unique IDs.
  */
-const requestId = require('@hypefight/koa-request-id-header')
+const uuid = require('uuid/v4')
 
 /**
  * Generated unique ID for a session and sets it in a response header.
@@ -10,6 +10,8 @@ const requestId = require('@hypefight/koa-request-id-header')
  * @param {Object} ctx - Koa2 context object.
  * @param {Function} next - Koa2 function to proceed to the next handler.
  */
-module.exports = () => async (ctx, next) => {
-  await requestId(ctx.state.config.requestIdHeader)(ctx, next)
+module.exports = (requestIdHeader = 'x-request-id') => async (ctx, next) => {
+  const receivedRequestId = ctx.get(requestIdHeader)
+  receivedRequestId ? ctx.set(requestIdHeader, receivedRequestId) : ctx.set(requestIdHeader, uuid())
+  await next()
 }

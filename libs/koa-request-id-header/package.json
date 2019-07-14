@@ -1,5 +1,5 @@
 {
-  "name": "@hypefight/request-id",
+  "name": "@hypefight/koa-request-id-header",
   "description": "",
   "keywords": [],
   "repository": "",
@@ -11,6 +11,6 @@
     "nohoist": ["**"]
   },
   "dependencies": {
-    "@hypefight/koa-request-id-header": "^0.0.1"
+    "uuid": "^3.3.2"
   }
 }
