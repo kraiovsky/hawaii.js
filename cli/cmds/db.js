@@ -3,6 +3,7 @@ const yargs = require('yargs')
 const { exec, env } = require('shelljs')
 
 const demandOptions = require('../utils/demand-options')
+const buildDbTableName = require('../utils/build-db-table-name')
 
 yargonaut.style('cyan').errorsStyle('red')
 const chalk = yargonaut.chalk()
@@ -23,33 +24,56 @@ yargs
     describe: chalk.yellow('function to execute command for'),
     type: 'string',
   })
+  .option('table', {
+    alias: 't',
+    describe: chalk.yellow('DB table to execute command for'),
+    type: 'string',
+  })
   .command({
     command: 'migrate',
     desc: chalk.bold.green('build table'),
     handler: argv => {
-      demandOptions(['environment', 'function'], argv)
+      demandOptions(['environment', 'function', 'table'], argv)
+      const { modelNameCapitalized, nodeConfig, tableNameValue } = buildDbTableName(argv)
       env['NODE_ENV'] = argv.environment
-      exec(`node functions/${argv.function}/src/models/${argv.function}`)
+      exec(
+        `node functions/${argv.function}/src/models/${modelNameCapitalized} --NODE_CONFIG='${nodeConfig}'`
+      )
+      console.log(`🎉 ${tableNameValue} successfully migrated.`)
     },
   })
   .command({
     command: 'seed',
     desc: chalk.bold.green('seed table'),
     handler: argv => {
-      demandOptions(['environment', 'function'], argv)
+      demandOptions(['environment', 'function', 'table'], argv)
+      const { modelNameLowercased, nodeConfig, tableNameValue } = buildDbTableName(argv)
       env['NODE_ENV'] = argv.environment
-      exec(`node functions/${argv.function}/seeders/${argv.function}`)
+      exec(
+        `node functions/${argv.function}/seeders/${modelNameLowercased} --NODE_CONFIG='${nodeConfig}'`
+      )
+      console.log(`🎉 ${tableNameValue} successfully seeded.`)
     },
   })
   .command({
     command: 'reset',
     desc: chalk.bold.red('reset table (delete-build-seed)'),
     handler: argv => {
-      demandOptions(['environment', 'function'], argv)
-      env['NODE_ENV'] = argv.environment
+      demandOptions(['environment', 'function', 'table'], argv)
+      const {
+        modelNameCapitalized,
+        modelNameLowercased,
+        nodeConfig,
+        tableNameValue,
+      } = buildDbTableName(argv)
       env['FN_NAME'] = argv.function
-      exec(`node scripts/db/delete-table`, { async: true })
-      exec(`node functions/${argv.function}/seeders/${argv.function}`, { async: true })
+      env['TABLE_NAME'] = modelNameCapitalized
+      exec(`node cli/scripts/db/delete-table`, { async: true })
+      exec(
+        `node functions/${argv.function}/seeders/${modelNameLowercased} --NODE_CONFIG='${nodeConfig}'`,
+        { async: true }
+      )
+      console.log(`🎉 ${tableNameValue} successfully reset.`)
     },
   })
   .command({
