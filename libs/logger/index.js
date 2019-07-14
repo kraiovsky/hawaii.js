@@ -2,7 +2,6 @@
  * @file A logger utility.
  */
 const extend = require('extend')
-const pick = require('just-pick')
 const { logInfo, logReq, logRes } = require('./lib/log-utils')
 const Timer = require('./lib/time-utils')
 
@@ -43,9 +42,13 @@ const ReqResLogger = customOptions => async (ctx, next) => {
  * @param {Object} ctx - Koa2 context object.
  */
 const ErrorLogger = () => (err, ctx) => {
+  const { request, response } = ctx
   const log = {
     error: err,
-    context: pick(ctx, ['request', 'response']),
+    context: {
+      request,
+      response,
+    },
   }
   console.error(log)
 }
