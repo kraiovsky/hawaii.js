@@ -10,7 +10,8 @@
     "docs": "node ./cli/cmds/docs",
     "db": "node ./cli/cmds/db",
     "repo": "node ./cli/cmds/repo",
-    "sls": "node ./cli/cmds/sls"
+    "sls": "node ./cli/cmds/sls",
+    "test": "jest"
   },
   "workspaces": [
     "functions/*",
