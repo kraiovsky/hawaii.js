@@ -29,7 +29,7 @@ yargs
           coerce: () => ':debug',
         })
         .positional('--generate', {
-          describe: chalk.yellow('skip generation of .env'),
+          describe: chalk.yellow('generation .env file'),
           type: 'boolean',
           alias: '-g',
         })
@@ -47,7 +47,7 @@ yargs
     desc: chalk.bold.green('start serverless offline'),
     builder: yargs => {
       yargs.positional('--generate', {
-        describe: chalk.yellow('skip generation of .env'),
+        describe: chalk.yellow('generate .env file'),
         type: 'boolean',
         alias: '-g',
       })
