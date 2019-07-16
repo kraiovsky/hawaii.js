@@ -3,8 +3,8 @@ const {
   queries: { mockFindByKey },
   fixtures: { mockUsersDB, mockNewUser },
 } = require('@hypefight/test-helpers')
-const Users = require('../users-rest-client')
-const tesCases = require('./users-rest-client.cases')
+const Users = require('../users')
+const tesCases = require('./users.cases')
 
 const serviceToken = ''
 const usersApiUrl = 'http://localhost:5001'

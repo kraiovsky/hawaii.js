@@ -4,7 +4,7 @@
 const ms = require('ms')
 const { generateToken, verifyToken } = require('@hypefight/auth-client/libs/token')
 const email = require('@hypefight/email-client')
-const User = require('../utils/users-rest-client')
+const Users = require('../api/users')
 const Tokens = require('../queries/tokens')
 const generateEmail = require('../../email-templates')
 
@@ -18,7 +18,7 @@ const generateEmail = require('../../email-templates')
  */
 const createUser = () => async (ctx, next) => {
   try {
-    const { body, statusCode } = await User.create(ctx)
+    const { body, statusCode } = await Users.create(ctx)
     ctx.state = {
       ...ctx.state,
       userCreated: statusCode === 201,
