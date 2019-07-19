@@ -23,9 +23,9 @@ const createUser = () => async (ctx, next) => {
       ...ctx.state,
       userCreated: statusCode === 201,
       jwtClaim: {
-        uid: body.data.id,
-        email: body.data.attributes.email,
-        scope: body.data.attributes.role,
+        uid: body.id,
+        email: body.email,
+        scope: body.role,
       },
     }
     await next()

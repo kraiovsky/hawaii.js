@@ -4,23 +4,25 @@ const {
 } = require('@hypefight/test-helpers')
 
 module.exports = {
-  create: jest.fn((reqBody, ctxState) => {
-    const user = mockFindByKey(mockUsersDB, 'email', reqBody.email)
+  create: jest.fn(ctx => {
+    const {
+      request: {
+        body: { email },
+      },
+    } = ctx
+
+    const user = mockFindByKey(mockUsersDB, 'email', email)
+
     return user
       ? {
-          created: false,
-          data: { data: { id: user.id, attributes: user } },
+          statusCode: 200,
+          body: { ...user },
         }
       : {
-          created: true,
-          data: {
-            data: {
-              id: mockNewUser.id,
-              attributes: {
-                ...mockNewUser,
-                email: reqBody.email,
-              },
-            },
+          statusCode: 201,
+          body: {
+            ...mockNewUser,
+            email,
           },
         }
   }),

@@ -18,7 +18,7 @@ const { JWT_REGEX } = require('../../../config/constants')
 const testCases = require('./auth.cases')
 
 jest.mock('../../queries/tokens')
-jest.mock('../../utils/users-rest-client')
+jest.mock('../../api/users')
 jest.mock('@hypefight/email-client')
 
 const config = {
