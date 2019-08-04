@@ -46,7 +46,12 @@
     "jsdoc/require-returns-type": 1,
     "jsdoc/valid-types": 0,
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "warn",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
   },
   "env":{
     "jest": true,
