@@ -18,8 +18,8 @@ const create = async ctx => {
     },
   } = ctx
   const body = { email }
-  const usersAPI = restClient('usersApiUrl')(ctx)
-  return await usersAPI.post('/v1/users', { body })
+  const usersApi = await restClient('usersApiUrl')(ctx)
+  return await usersApi.post('/v1/users', { body })
 }
 
 module.exports = {
