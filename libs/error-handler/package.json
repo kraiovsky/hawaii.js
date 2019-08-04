@@ -8,6 +8,11 @@
   "private": true,
   "main": "index.js",
   "workspaces": {
-    "nohoist": ["**"]
+    "nohoist": [
+      "**"
+    ]
+  },
+  "dependencies": {
+    "boom": "^7.3.0"
   }
 }

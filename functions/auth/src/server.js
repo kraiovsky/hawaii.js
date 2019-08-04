@@ -1,25 +1,31 @@
 const Koa = require('koa')
 const Cors = require('@koa/cors')
 const Helmet = require('koa-helmet')
-const respond = require('koa-respond')
+const logger = require('koa-pino-logger')
+const responseTime = require('koa-response-time')
 const config = require('config')
 const errorHandler = require('@hypefight/error-handler')
 const sessionConfig = require('@hypefight/config')
-const { ReqResLogger, ErrorLogger } = require('@hypefight/logger')
 const requestId = require('@hypefight/request-id')
 const routes = require('./routes')
-const errors = require('../config/errors')
 
 const app = new Koa()
 
-app.use(ReqResLogger())
-app.on('error', ErrorLogger())
-app.use(errorHandler(errors))
+app.use(responseTime())
+app.use(
+  logger({
+    prettyPrint: { forceColor: true },
+    redact: {
+      paths: [],
+      censor: '**MASKED**',
+    },
+  })
+)
+app.use(errorHandler())
 app.use(sessionConfig(config))
 app.use(requestId())
 app.use(Helmet())
 app.use(Cors())
-app.use(respond())
 app.use(routes.middleware())
 
 module.exports = app

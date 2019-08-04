@@ -12,7 +12,7 @@ const got = require('got')
  * @param {string} serviceUrlConfigKey - Key of the env variable that has base URL for the target service.
  *
  */
-module.exports = serviceUrlConfigKey => ctx => {
+module.exports = serviceUrlConfigKey => async ctx => {
   const {
     state: {
       serviceToken,

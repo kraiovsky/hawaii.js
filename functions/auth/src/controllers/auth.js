@@ -7,6 +7,7 @@ const email = require('@hypefight/email-client')
 const Users = require('../api/users')
 const Tokens = require('../queries/tokens')
 const generateEmail = require('../../email-templates')
+const { INVALID_TOKEN } = require('../../config/errors')
 
 /**
  * Takes user params from request body and tries to create a user.
@@ -18,19 +19,22 @@ const generateEmail = require('../../email-templates')
  */
 const createUser = () => async (ctx, next) => {
   try {
-    const { body, statusCode } = await Users.create(ctx)
+    const {
+      body: { data },
+      statusCode,
+    } = await Users.create(ctx)
     ctx.state = {
       ...ctx.state,
       userCreated: statusCode === 201,
       jwtClaim: {
-        uid: body.id,
-        email: body.email,
-        scope: body.role,
+        uid: data.id,
+        email: data.attributes.email,
+        scope: data.attributes.role,
       },
     }
     await next()
-  } catch (err) {
-    ctx.fail({ info: err })
+  } catch (error) {
+    ctx.throw(500, 'Call to Users service failed.', { error })
   }
 }
 
@@ -75,9 +79,8 @@ const genClaimFromToken = () => async (ctx, next) => {
     token = ctx.query.token
     maxAge = ctx.state.config.confirmTokenMaxAge
   }
-  const user = await verifyToken(token, ctx.state.config.jwtSecret, { maxAge: maxAge })
-  if (user.error) ctx.fail({ msg: 'AUTH_INCORRECT_REFRESH_TOKEN', info: user.error })
-
+  const user = await verifyToken(token, ctx.state.config.jwtSecret, { maxAge })
+  if (user.error) ctx.throw(401, INVALID_TOKEN, { error: user.error })
   ctx.state.jwtClaim = {
     uid: user.uid,
     email: user.email,
@@ -152,12 +155,13 @@ const respondWithTokens = () => ctx => {
     'cache-control': 'no-store',
     pragma: 'no-cache',
   })
-  ctx.ok({
+  ctx.status = 200
+  ctx.body = {
     access_token: ctx.state.accessToken,
     token_type: 'Bearer',
     expires_in: ms(ctx.state.config.accessTokenMaxAge),
     refresh_token: ctx.state.refreshToken,
-  })
+  }
 }
 
 /**
@@ -183,12 +187,13 @@ const sendMagicLink = () => async ctx => {
 
   try {
     await email(magicLinkMsg, smtpConfig)
-    ctx.send(statusCode, {
+    ctx.status = statusCode
+    ctx.body = {
       status: 'OK',
       message: 'confirmation token sent',
-    })
-  } catch (err) {
-    ctx.fail({ info: err })
+    }
+  } catch (error) {
+    ctx.throw(500, 'Sending email with magic link failed.', { error })
   }
 }
 

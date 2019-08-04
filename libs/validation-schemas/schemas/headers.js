@@ -2,7 +2,7 @@ const Joi = require('joi')
 
 const JWT_REGEX_WITH_BEARER = /^Bearer ([a-zA-Z0-9_=]+)\.([a-zA-Z0-9_=]+)\.([a-zA-Z0-9_\-+/=]*)/
 
-module.exports.REQ_AUTH_HEADERS_VALIDATION = Joi.object({
+const REQ_AUTH_HEADERS_VALIDATION = Joi.object({
   authorization: Joi.string()
     .regex(JWT_REGEX_WITH_BEARER)
     .required(),
@@ -10,7 +10,7 @@ module.exports.REQ_AUTH_HEADERS_VALIDATION = Joi.object({
   allowUnknown: true,
 })
 
-module.exports.RES_AUTH_HEADERS_VALIDATION = Joi.object({
+const RES_AUTH_HEADERS_VALIDATION = Joi.object({
   'cache-control': Joi.string()
     .valid('no-store')
     .required(),
@@ -20,3 +20,8 @@ module.exports.RES_AUTH_HEADERS_VALIDATION = Joi.object({
 }).options({
   allowUnknown: true,
 })
+
+module.exports = {
+  REQ_AUTH_HEADERS_VALIDATION,
+  RES_AUTH_HEADERS_VALIDATION,
+}

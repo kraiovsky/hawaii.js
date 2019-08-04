@@ -1,7 +1,5 @@
 const Router = require('koa-joi-router')
-const users = new Router()
 const { createUser, findUser } = require('../controllers/v1')
-const validateReqRes = require('@hypefight/req-res-validator')
 const { Authenticate, Authorize } = require('@hypefight/auth-client')
 const { USER_PROFILE_RES_SUCCESS } = require('../schemas/users-validators')
 const {
@@ -11,7 +9,9 @@ const {
   UUID_SCHEMA,
   EMAIL_SCHEMA,
   QUERY_FIELDS_SCHEMA,
-} = require('@hypefight/req-res-validator/schemas')
+} = require('@hypefight/validation-schemas')
+
+const users = new Router()
 
 users.route({
   method: 'post',
@@ -28,9 +28,8 @@ users.route({
         body: RES_ERROR_VALIDATION,
       },
     },
-    continueOnError: true,
   },
-  handler: [validateReqRes(), Authenticate(), Authorize(['auth']), createUser()],
+  handler: [Authenticate(), Authorize(['auth']), createUser()],
 })
 
 users.route({
@@ -53,9 +52,8 @@ users.route({
         body: RES_ERROR_VALIDATION,
       },
     },
-    continueOnError: true,
   },
-  handler: [validateReqRes(), Authenticate(), Authorize(['auth']), findUser()],
+  handler: [Authenticate(), Authorize(['auth']), findUser()],
 })
 
 module.exports = users

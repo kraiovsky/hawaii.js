@@ -1,11 +1,10 @@
 const Router = require('koa-joi-router')
-const validateReqRes = require('@hypefight/req-res-validator')
 const { SignTransportReq } = require('@hypefight/auth-client')
 const {
   LOGIN_REQ_BODY,
   RES_AUTH_HEADERS_VALIDATION,
   RES_ERROR_VALIDATION,
-} = require('@hypefight/req-res-validator/schemas')
+} = require('@hypefight/validation-schemas')
 const {
   CONFIRM_REQ_PARAMS,
   REFRESH_REQ_BODY,
@@ -39,9 +38,8 @@ auth.route({
         body: RES_ERROR_VALIDATION,
       },
     },
-    continueOnError: true,
   },
-  handler: [validateReqRes(), SignTransportReq(), createUser(), genConfirmToken(), sendMagicLink()],
+  handler: [SignTransportReq(), createUser(), genConfirmToken(), sendMagicLink()],
 })
 
 auth.route({
@@ -58,15 +56,8 @@ auth.route({
         body: RES_ERROR_VALIDATION,
       },
     },
-    continueOnError: true,
   },
-  handler: [
-    validateReqRes(),
-    genClaimFromToken(),
-    genAccessRefreshTokens(),
-    upsertToken(),
-    respondWithTokens(),
-  ],
+  handler: [genClaimFromToken(), genAccessRefreshTokens(), upsertToken(), respondWithTokens()],
 })
 
 auth.route({
@@ -84,15 +75,8 @@ auth.route({
         body: RES_ERROR_VALIDATION,
       },
     },
-    continueOnError: true,
   },
-  handler: [
-    validateReqRes(),
-    genClaimFromToken(),
-    genAccessRefreshTokens(),
-    updateToken(),
-    respondWithTokens(),
-  ],
+  handler: [genClaimFromToken(), genAccessRefreshTokens(), updateToken(), respondWithTokens()],
 })
 
 module.exports = auth

@@ -1,5 +1,5 @@
 {
-  "name": "@hypefight/logger",
+  "name": "@hypefight/validation-schemas",
   "description": "",
   "keywords": [],
   "repository": "",
@@ -11,9 +11,6 @@
     "nohoist": ["**"]
   },
   "dependencies": {
-    "chalk": "^2.4.2",
-    "extend": "^3.0.2",
-    "humanize-number": "github:component/humanize-number",
-    "just-pick": "^2.1.0"
+    "joi": "^14.3.1"
   }
 }

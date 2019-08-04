@@ -4,6 +4,7 @@
 const { Serializer } = require('@hypefight/json-api-serializer')
 const Users = require('../queries/users')
 const userSchema = require('../schemas/generators')
+const { USER_NOT_FOUND } = require('../../config/errors')
 
 /**
  * Create user with provided profile data.
@@ -17,7 +18,8 @@ const createUser = () => async ctx => {
   const { email } = ctx.request.body
   const { data, created } = await Users.create(ctx, email)
   const user = await Serializer('user', userSchema(''), data)
-  await ctx.send(created ? 201 : 200, user)
+  ctx.status = created ? 201 : 200
+  ctx.body = user
 }
 
 /**
@@ -34,9 +36,10 @@ const findUser = () => async ctx => {
   const searchKey = ctx.query.searchKey || 'id'
   const searchQuery = { [searchKey]: ctx.params.searchQuery }
   const user = await Users.find(ctx, searchQuery)
-  if (!user) ctx.fail({ msg: 'USER_NOT_FOUND' })
+  if (!user) ctx.throw(404, USER_NOT_FOUND)
   const serializedUser = await Serializer('user', userSchema(ctx.query['fields[users]']), user)
-  await ctx.ok(serializedUser)
+  ctx.status = 200
+  ctx.body = serializedUser
 }
 
 module.exports = {

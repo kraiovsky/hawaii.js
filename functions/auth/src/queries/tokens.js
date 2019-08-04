@@ -2,6 +2,7 @@
  * @file Auth Tokens SQL queries.
  */
 const Token = require('../models/tokens')
+const { INVALID_TOKEN } = require('../../config/errors')
 
 /**
  * Update or insert new refresh token for a given user.
@@ -20,8 +21,8 @@ const upsert = async ctx => {
   try {
     await item.save()
     return true
-  } catch (err) {
-    ctx.fail({ info: err })
+  } catch (error) {
+    ctx.throw(500, 'Refresh token upsert operation failed', { error })
   }
 }
 
@@ -47,10 +48,11 @@ const update = async ctx => {
       }
     )
     return true
-  } catch (err) {
-    if (err.code === 'ConditionalCheckFailedException')
-      ctx.fail({ msg: 'AUTH_INCORRECT_REFRESH_TOKEN', info: err })
-    ctx.fail({ info: err })
+  } catch (error) {
+    if (error.code === 'ConditionalCheckFailedException') {
+      ctx.throw(401, INVALID_TOKEN, { error })
+    }
+    ctx.throw(500, 'Refresh token update operation failed', { error })
   }
 }
 

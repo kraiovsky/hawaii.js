@@ -20,8 +20,8 @@ const create = async (ctx, email) => {
       data: user,
       created: Date.parse(user.createdAt) === Date.parse(user.updatedAt),
     }
-  } catch (err) {
-    ctx.fail({ info: err })
+  } catch (error) {
+    ctx.throw(500, 'Failed to create/update a user', { error })
   }
 }
 
@@ -38,8 +38,8 @@ const find = async (ctx, query) => {
   try {
     const user = await User.queryOne(query).exec()
     return user
-  } catch (err) {
-    ctx.fail({ info: err })
+  } catch (error) {
+    ctx.throw(500, 'Failed to query a user', { error })
   }
 }
 

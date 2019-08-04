@@ -1,5 +1,5 @@
 const Joi = require('joi')
-const { RES_JSON_API_SCHEMA } = require('@hypefight/req-res-validator/schemas')
+const { RES_JSON_API_SCHEMA } = require('@hypefight/validation-schemas')
 
 const USER = Joi.object()
   .keys({
