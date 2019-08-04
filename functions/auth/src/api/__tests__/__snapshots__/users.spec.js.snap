@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create() 👍 should return existing user object and status 200 1`] = `
+Object {
+  "data": Object {
+    "attributes": Object {
+      "avatar": null,
+      "email": "admin@domain.com",
+      "name": "Admin",
+      "role": "admin",
+    },
+    "id": "0ae76c84-d939-456d-bb35-f60b7659ed6b",
+    "links": Object {
+      "self": "/users/0ae76c84-d939-456d-bb35-f60b7659ed6b",
+    },
+    "type": "user",
+  },
+  "jsonapi": Object {
+    "version": "1.0",
+  },
+  "links": Object {
+    "index": "/users",
+  },
+}
+`;
+
+exports[`create() 👍 should return new user object and status 201 1`] = `
+Object {
+  "data": Object {
+    "attributes": Object {
+      "avatar": null,
+      "email": "user@domain.com",
+      "name": null,
+      "role": "user",
+    },
+    "id": "e9ad2f8f-b871-4048-95ff-29577f4285f5",
+    "links": Object {
+      "self": "/users/e9ad2f8f-b871-4048-95ff-29577f4285f5",
+    },
+    "type": "user",
+  },
+  "jsonapi": Object {
+    "version": "1.0",
+  },
+  "links": Object {
+    "index": "/users",
+  },
+}
+`;

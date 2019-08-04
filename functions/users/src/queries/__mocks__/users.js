@@ -1,8 +1,8 @@
 const {
-  queries: { mockFindByKey },
+  dbQueries: { mockFindByKey },
 } = require('@hypefight/test-helpers')
-const mockUsersDB = require('@hypefight/test-helpers/fixtures/users')
-const mockNewUser = require('@hypefight/test-helpers/fixtures/newUser')
+const mockUsersDB = require('../../../__fixtures__/users')
+const mockNewUser = require('../../../__fixtures__/newUser')
 
 module.exports = {
   create: (ctx, email) => {

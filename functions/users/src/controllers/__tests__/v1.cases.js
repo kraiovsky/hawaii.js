@@ -1,8 +1,8 @@
 module.exports = {
   createUser: {
     happy: [
-      ['return existing user', 'email@domain.com'],
-      ['return new user', 'newemail@domain.com'],
+      ['return existing user', 'email@domain.com', 200],
+      ['return new user', 'newemail@domain.com', 201],
     ],
     sad: [],
   },

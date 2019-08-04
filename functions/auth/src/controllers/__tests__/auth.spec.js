@@ -1,9 +1,10 @@
 const { createMockContext } = require('@shopify/jest-koa-mocks')
 const { generateToken } = require('@hypefight/auth-client/libs/token')
 const {
-  queries: { mockFirstRecord },
-  fixtures: { mockUsersDB },
+  dbQueries: { mockFirstRecord },
 } = require('@hypefight/test-helpers')
+const mockUsersDB = require('../../../../users/__fixtures__/users')
+const { createUserMock } = require('../../../../users/__mocks__/v1')
 const {
   createUser,
   genConfirmToken,
@@ -18,7 +19,6 @@ const { JWT_REGEX } = require('../../../config/constants')
 const testCases = require('./auth.cases')
 
 jest.mock('../../queries/tokens')
-jest.mock('../../api/users')
 jest.mock('@hypefight/email-client')
 
 const config = {
@@ -28,6 +28,8 @@ const config = {
   jwtSecret: 'test_secret',
   projectName: 'Prj Name',
   email: 'testmail@prj.com',
+  serviceToken: '',
+  usersApiUrl: 'http://localhost:5001',
 }
 const { uid, email, role: scope } = mockFirstRecord(mockUsersDB)
 const jwtClaim = { uid, email, scope }
@@ -35,55 +37,28 @@ const jwtClaim = { uid, email, scope }
 let ctx
 const next = jest.fn()
 beforeEach(() => {
-  ctx = createMockContext({ state: { config, jwtClaim } })
-  ctx = {
-    ...ctx,
-    set: jest.fn(headers => {
-      ctx.headers = {
-        ...ctx.headers,
-        ...headers,
-      }
-    }),
-    send: jest.fn((status, body) => {
-      ctx.response = { status, body }
-    }),
-    ok: jest.fn(body => ctx.send(200, body)),
-    throw: jest.fn(() =>
-      ctx.send(500, {
-        errors: [
-          {
-            status: 500,
-            title: 'INTERNAL_SERVER_ERROR',
-            detail: 'Internal Server Error',
-          },
-        ],
-      })
-    ),
-    fail: jest.fn(({ code, msg, info }) =>
-      ctx.send(code || 500, {
-        errors: [
-          {
-            status: code || 500,
-            title: msg || 'INTERNAL_SERVER_ERROR',
-            detail: info || 'ctx.fail called',
-          },
-        ],
-      })
-    ),
-  }
+  ctx = createMockContext({
+    state: { config, jwtClaim },
+    header: { 'x-request-id': '123-abc-456' },
+  })
+  ctx.set = jest.fn()
+  ctx.response.get = jest.fn(header => ctx.headers[header])
+  createUserMock()
 })
 afterEach(() => {
   jest.clearAllMocks()
 })
 
+/**
+ * This is more an integration test, not pure unit test:
+ * Users API client is not mocked, but rather calls Users service which returns mocked data.
+ * It is done as I have not seen much value in testing simple setting of ctx state and writing boilerplate for Users API.
+ * Instead, this is in line with testing strategy to have Users service own their data.
+ */
 describe('createUser()', () => {
   describe.each(testCases.createUser.happy)('👍', (should, email, expectCreated) => {
     test(`should ${should}`, async () => {
-      ctx.request = {
-        body: {
-          email,
-        },
-      }
+      ctx.request.body = { email }
       await createUser()(ctx, next)
       expect(ctx.state.userCreated).toBe(expectCreated)
       expect(ctx.state.jwtClaim).toMatchSnapshot()
@@ -103,11 +78,11 @@ describe('genConfirmToken()', () => {
 describe('genClaimFromToken()', () => {
   describe('GET /refresh', () => {
     test(`👍 should validate received refresh token and set state with JWT claim`, async () => {
-      ctx.path = '/refresh'
       ctx.request = {
         body: {
           refresh_token: generateToken(jwtClaim, config.jwtSecret, config.refreshTokenMaxAge),
         },
+        path: '/refresh',
       }
       await genClaimFromToken()(ctx, next)
       expect(ctx.state.jwtClaim).toMatchObject(jwtClaim)
@@ -117,9 +92,11 @@ describe('genClaimFromToken()', () => {
   describe('GET /confirm', () => {
     describe('👍', () => {
       test(`should validate received confirmation token and set state with JWT claim`, async () => {
-        ctx.path = '/confirm'
-        ctx.query = {
-          token: generateToken(jwtClaim, config.jwtSecret, config.refreshTokenMaxAge),
+        ctx.request = {
+          path: '/confirm',
+          query: {
+            token: generateToken(jwtClaim, config.jwtSecret, config.refreshTokenMaxAge),
+          },
         }
         await genClaimFromToken()(ctx, next)
         expect(ctx.state.jwtClaim).toMatchObject(jwtClaim)
@@ -127,14 +104,15 @@ describe('genClaimFromToken()', () => {
       })
     })
     describe('👎', () => {
-      test(`should fail with incorrect token message`, async () => {
-        ctx.path = '/confirm'
-        ctx.query = {
-          token: 'incorrect_token',
+      test(`should throw with 401, invalid token message and error object`, async () => {
+        ctx.request = {
+          path: '/confirm',
+          query: {
+            token: 'incorrect_token',
+          },
         }
         await genClaimFromToken()(ctx, next)
-        expect(ctx.fail).toHaveBeenCalled()
-        expect(ctx.response).toMatchSnapshot()
+        expect(ctx.throw).toHaveBeenCalledWith(401, expect.any(String), expect.any(Object))
       })
     })
   })
@@ -177,8 +155,7 @@ describe('upsertToken()', () => {
         },
       }
       await upsertToken()(ctx, next)
-      expect(ctx.fail).toHaveBeenCalled()
-      expect(ctx.response).toMatchSnapshot()
+      expect(ctx.throw).toHaveBeenCalledWith(500, expect.any(String))
     })
   })
 })
@@ -204,7 +181,7 @@ describe('updateToken()', () => {
       expect(next).toHaveBeenCalled()
     })
   })
-  describe.each(testCases.updateToken.sad)('👎', (uid, oldToken, newToken, expected) => {
+  describe.each(testCases.updateToken.sad)('👎', (uid, oldToken, newToken, errorCode, expected) => {
     test(`should ${expected}`, async () => {
       ctx.state = {
         ...ctx.state,
@@ -221,8 +198,7 @@ describe('updateToken()', () => {
         },
       }
       await updateToken()(ctx, next)
-      expect(ctx.fail).toHaveBeenCalled()
-      expect(ctx.response).toMatchSnapshot()
+      expect(ctx.throw).toHaveBeenCalledWith(errorCode, expect.any(String))
     })
   })
 })
@@ -236,22 +212,18 @@ describe('respondWithTokens()', () => {
     }
     await respondWithTokens()(ctx)
     expect(ctx.set).toHaveBeenCalled()
-    expect(ctx.headers).toEqual(
+    expect(ctx.response).toEqual(
       expect.objectContaining({
-        'cache-control': 'no-store',
-        pragma: 'no-cache',
+        message: 'OK',
+        body: {
+          access_token: 'access_token_sample',
+          token_type: 'Bearer',
+          expires_in: 300000,
+          refresh_token: 'refresh_token_sample',
+        },
+        status: 200,
       })
     )
-    expect(ctx.ok).toHaveBeenCalled()
-    expect(ctx.response).toMatchObject({
-      body: {
-        access_token: 'access_token_sample',
-        token_type: 'Bearer',
-        expires_in: 300000,
-        refresh_token: 'refresh_token_sample',
-      },
-      status: 200,
-    })
   })
 })
 
@@ -264,13 +236,14 @@ describe('sendMagicLink()', () => {
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIwYWU3NmM4NC1kOTM5LTQ1NmQtYmIzNS1mNjBiNzY1OWVkNmIiLCJlbWFpbCI6ImFkbWluQGRvbWFpbi5jb20iLCJzY29wZSI6ImFkbWluIiwiaWF0IjoxNTQ3ODk4ODMzLCJleHAiOjE1NDc4OTkxMzN9.Be1EcClKctfkYaNhAb02IimShm3ahf9yQzqhC0N0new',
     }
     await sendMagicLink()(ctx)
-    expect(ctx.send).toHaveBeenCalled()
-    expect(ctx.response).toMatchObject({
-      body: {
-        status: 'OK',
-        message: 'confirmation token sent',
-      },
-      status: 201,
-    })
+    expect(ctx.response).toEqual(
+      expect.objectContaining({
+        body: {
+          status: 'OK',
+          message: 'confirmation token sent',
+        },
+        status: 201,
+      })
+    )
   })
 })
