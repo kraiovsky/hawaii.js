@@ -6,13 +6,17 @@
     "prettier",
     "prettier/react",
     "prettier/standard",
-    "plugin:jest/recommended"
+    "plugin:jest/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:promise/recommended",
   ],
   "plugins": [
     "react",
     "react-hooks",
     "prettier",
     "standard",
+    "jsx-a11y",
+    "promise",
     "jest",
     "jsdoc"
   ],
