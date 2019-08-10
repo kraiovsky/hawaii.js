@@ -1,8 +1,8 @@
 const { Serializer } = require('../')
 const {
-  queries: { mockFirstRecord },
-  fixtures: { mockUsersDB },
+  dbQueries: { mockFirstRecord },
 } = require('@hypefight/test-helpers')
+const mockUsersDB = require('../../../functions/users/__fixtures__/users')
 const mockUserObject = require('../fixtures/userSerializationObject')
 
 const mockUserProfile = mockFirstRecord(mockUsersDB)
