@@ -14,10 +14,10 @@
     "nohoist": ["**"]
   },
   "dependencies": {
-    "@hypefight/test-helpers": "^0.0.1",
     "json-api-serializer": "^1.13.0"
   },
   "devDependencies": {
+    "@hypefight/test-helpers": "^0.0.1",
     "jest": "^24.0.0"
   }
 }

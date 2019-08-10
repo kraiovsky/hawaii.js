@@ -11,10 +11,6 @@
     "nohoist": ["**"]
   },
   "dependencies": {
-    "@hypefight/error-handler": "^0.0.1",
-    "config": "^3.0.1",
-    "dotenv": "^8.0.0",
-    "got": "^9.3.1",
     "jsonwebtoken": "^8.4.0"
   }
 }

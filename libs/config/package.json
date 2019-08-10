@@ -8,9 +8,9 @@
   "private": true,
   "main": "index.js",
   "workspaces": {
-    "nohoist": ["**"]
+    "nohoist": [
+      "**"
+    ]
   },
-  "dependencies": {
-    "config": "^3.0.1"
-  }
+  "dependencies": {}
 }
