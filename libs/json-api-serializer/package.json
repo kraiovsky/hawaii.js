@@ -11,10 +11,12 @@
     "test": "yarn jest"
   },
   "workspaces": {
-    "nohoist": ["**"]
+    "nohoist": [
+      "**"
+    ]
   },
   "dependencies": {
-    "json-api-serializer": "^1.13.0"
+    "json-api-serializer": "^2.0.2"
   },
   "devDependencies": {
     "@hypefight/test-helpers": "^0.0.1",
