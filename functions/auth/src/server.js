@@ -14,7 +14,7 @@ const app = new Koa()
 app.use(responseTime())
 app.use(
   logger({
-    prettyPrint: { forceColor: true },
+    prettyPrint: true,
     redact: {
       paths: [],
       censor: '**MASKED**',
