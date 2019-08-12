@@ -8,9 +8,11 @@
   "private": true,
   "main": "index.js",
   "workspaces": {
-    "nohoist": ["**"]
+    "nohoist": [
+      "**"
+    ]
   },
   "dependencies": {
-    "@hypefight/koa-request-id-header": "^0.0.1"
+    "koa-req-id": "^1.0.0"
   }
 }

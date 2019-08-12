@@ -1,8 +1,8 @@
-const Joi = require('joi')
+const Joi = require('@hapi/joi')
 
 module.exports.LOGIN_REQ_BODY = {
   email: Joi.string()
     .lowercase()
-    .email({ minDomainAtoms: 2 })
+    .email({ minDomainSegments: 2 })
     .required(),
 }

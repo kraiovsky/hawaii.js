@@ -1,4 +1,4 @@
-const Joi = require('joi')
+const Joi = require('@hapi/joi')
 const { RES_JSON_API_SCHEMA } = require('@hypefight/validation-schemas')
 
 const USER = Joi.object()
@@ -13,7 +13,7 @@ const USER = Joi.object()
       .keys({
         email: Joi.string()
           .lowercase()
-          .email({ minDomainAtoms: 2 }),
+          .email({ minDomainSegments: 2 }),
         name: Joi.string().allow(null),
         avatar: Joi.string()
           .uri()

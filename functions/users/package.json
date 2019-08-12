@@ -28,7 +28,7 @@
     "@koa/cors": "^3.0.0",
     "config": "^3.0.1",
     "dotenv": "^8.0.0",
-    "joi": "^14.3.0",
+    "@hapi/joi": "^15.0.0",
     "koa": "^2.5.0",
     "koa-helmet": "^4.0.0",
     "koa-joi-router": "^6.0.0",

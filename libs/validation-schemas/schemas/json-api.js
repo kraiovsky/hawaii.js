@@ -1,4 +1,4 @@
-const Joi = require('joi')
+const Joi = require('@hapi/joi')
 
 module.exports.RES_JSON_API_SCHEMA = dataObject => {
   return {

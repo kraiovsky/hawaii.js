@@ -1,4 +1,4 @@
-const Joi = require('joi')
+const Joi = require('@hapi/joi')
 
 const QUERY_FIELDS_VALIDATION_REGEX = /^,?(\w+,?)*$/
 
@@ -10,7 +10,7 @@ const UUID_SCHEMA = Joi.string().guid({
 
 const EMAIL_SCHEMA = Joi.string()
   .lowercase()
-  .email({ minDomainAtoms: 2 })
+  .email({ minDomainSegments: 2 })
 
 const QUERY_FIELDS_SCHEMA = Joi.string()
   .regex(QUERY_FIELDS_VALIDATION_REGEX)

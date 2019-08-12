@@ -1,4 +1,4 @@
-const Joi = require('joi')
+const Joi = require('@hapi/joi')
 const { JWT_REGEX } = require('../../config/constants')
 
 const JWT = Joi.string()

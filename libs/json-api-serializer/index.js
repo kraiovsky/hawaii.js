@@ -16,5 +16,5 @@ const serializer = new JSONAPISerializer()
  */
 module.exports.Serializer = (resource, object, data, meta = {}) => {
   serializer.register(resource, object)
-  return serializer.serialize(resource, data, meta)
+  return JSON.stringify(serializer.serialize(resource, data, meta))
 }

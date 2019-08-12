@@ -11,6 +11,6 @@
     "nohoist": ["**"]
   },
   "dependencies": {
-    "joi": "^14.3.1"
+    "@hapi/joi": "^15.0.0"
   }
 }

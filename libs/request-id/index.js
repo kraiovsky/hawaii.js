@@ -2,7 +2,7 @@
  * @file Unique request id generation utility.
  * Uses UUID V4 to generate unique IDs.
  */
-const requestId = require('@hypefight/koa-request-id-header')
+const requestId = require('koa-req-id')
 
 /**
  * Generated unique ID for a session and sets it in a response header.
