@@ -1,5 +1,5 @@
 /**
- * @file Users API schema generator
+ * @file Users API schema generator.
  */
 const schema = require('@hypefight/json-api-schema-generator')
 
