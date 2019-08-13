@@ -21,7 +21,7 @@ yargs
       })
     },
     handler: argv => {
-      let cmd = `yarn ${argv.action}`
+      const cmd = `yarn ${argv.action}`
       cd(`clients/web`)
       exec(cmd)
     },
