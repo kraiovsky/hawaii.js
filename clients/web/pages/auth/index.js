@@ -20,7 +20,7 @@ const Auth = () => {
     if (isAuthenticatedUser) {
       Router.push('/')
     }
-  })
+  }, [dispatch, isAuthenticatedUser])
 
   const handleSendEmail = async ({ email }) => {
     await setError(false)
