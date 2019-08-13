@@ -93,22 +93,6 @@
         "title": "Json-api-serializer readme",
         "sidebar_label": "Readme"
       },
-      "libs/logger/logger-changelog": {
-        "title": "Logger changelog",
-        "sidebar_label": "Changelog"
-      },
-      "libs/logger/logger-readme": {
-        "title": "Logger readme",
-        "sidebar_label": "Readme"
-      },
-      "libs/req-res-validator/req-res-validator-changelog": {
-        "title": "Req-res-validator changelog",
-        "sidebar_label": "Changelog"
-      },
-      "libs/req-res-validator/req-res-validator-readme": {
-        "title": "Req-res-validator readme",
-        "sidebar_label": "Readme"
-      },
       "libs/request-id/request-id-changelog": {
         "title": "Request-id changelog",
         "sidebar_label": "Changelog"
@@ -117,12 +101,28 @@
         "title": "Request-id readme",
         "sidebar_label": "Readme"
       },
+      "libs/s2s-rest-client/s2s-rest-client-changelog": {
+        "title": "S2s-rest-client changelog",
+        "sidebar_label": "Changelog"
+      },
+      "libs/s2s-rest-client/s2s-rest-client-readme": {
+        "title": "S2s-rest-client readme",
+        "sidebar_label": "Readme"
+      },
       "libs/test-helpers/test-helpers-changelog": {
         "title": "Test-helpers changelog",
         "sidebar_label": "Changelog"
       },
       "libs/test-helpers/test-helpers-readme": {
         "title": "Test-helpers readme",
+        "sidebar_label": "Readme"
+      },
+      "libs/validation-schemas/validation-schemas-changelog": {
+        "title": "Validation-schemas changelog",
+        "sidebar_label": "Changelog"
+      },
+      "libs/validation-schemas/validation-schemas-readme": {
+        "title": "Validation-schemas readme",
         "sidebar_label": "Readme"
       },
       "readme": {
