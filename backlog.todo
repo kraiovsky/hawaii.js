@@ -2,6 +2,7 @@ To Do:
   ☐ Clean up shared and redundant validation schemas
   ☐ Fix duplicate user record creation for similar email
   ☐ Fix DB CLI to better handle not existant tables and seeders
-  ☐ Move koa-request-id-header into standalone node package
+  ☐ Update/create project docs
+  ✔ Move koa-request-id-header into standalone node package @done (8/13/2019, 10:18:10 PM)
   ✔ Create front-end with Next.js and serve from lambda @done (7/19/2019, 7:37:39 AM)
-  ☐ Implement AWS Lambda warm starts https://serverless.com/blog/keep-your-lambdas-warm/ or https://read.acloud.guru/how-to-keep-your-lambda-functions-warm-9d7e1aa6e2f0 
+  ☐ Implement AWS Lambda warm starts https://serverless.com/blog/keep-your-lambdas-warm/ or https://read.acloud.guru/how-to-keep-your-lambda-functions-warm-9d7e1aa6e2f0
