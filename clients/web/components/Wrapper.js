@@ -31,7 +31,7 @@ const Wrapper = ({ children }) => {
           }
         } catch (e) {
           /**
-           * if token is unauthorized, i.e. expired or invalid,
+           * If token is unauthorized, ie expired or invalid,
            * we do not want to keep refreshing and hitting server uselessly,
            * so let's clean it up.
            */
