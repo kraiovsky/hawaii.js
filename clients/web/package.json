@@ -12,7 +12,7 @@
     "dev": "next -p 5003",
     "build": "next build",
     "start": "next start",
-    "test": "jest"
+    "test": "NODE_ENV=development jest"
   },
   "dependencies": {
     "eslint-plugin-jest": "^22.1.3",
