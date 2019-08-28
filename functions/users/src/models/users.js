@@ -19,7 +19,7 @@ const modelSchema = {
       project: true,
     },
     required: true,
-    default: uuid(),
+    default: uuid,
   },
   name: {
     type: String,
