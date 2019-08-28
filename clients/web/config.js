@@ -2,10 +2,14 @@ const config = {
   development: {
     usersApiUrl: 'http://localhost:5001/users',
     authApiUrl: 'http://localhost:5002/auth',
+    s3BucketUrl: '',
   },
-  test: {},
-  production: {},
+  production: {
+    usersApiUrl: '',
+    authApiUrl: '',
+    s3BucketUrl: '',
+  },
 }
 const env = process.env.NODE_ENV || 'development'
 
-export default () => config[env]
+module.exports = () => config[env]

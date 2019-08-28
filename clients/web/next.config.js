@@ -1,3 +1,6 @@
+const config = require('./config')
+const { s3BucketUrl } = config()
+
 module.exports = {
-  // assetPrefix: 'https://s3.amazonaws.com/your-bucket-name',
+  assetPrefix: s3BucketUrl,
 }
