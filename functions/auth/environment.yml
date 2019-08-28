@@ -10,7 +10,7 @@ development:
 production:
   NODE_ENV: production
   SERVICE_NAME: auth
-  AUTH_JWT_SECRET: mysecretkey
   AWS_AKID: null # to be defined with secrets manager
   AWS_SAK: null # to be defined with secrets manager
+  AUTH_JWT_SECRET: null # to be defined with secrets manager
   DB_TOKENS_TABLE_NAME: auth-tokens-production
