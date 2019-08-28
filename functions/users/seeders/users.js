@@ -2,7 +2,7 @@ const faker = require('faker')
 
 const User = require('../src/models/users')
 
-let users = []
+const users = []
 let i = 10
 while (i--) {
   const user = {
