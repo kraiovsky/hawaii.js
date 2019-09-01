@@ -14,12 +14,11 @@ const { INVALID_TOKEN } = require('../../config/errors')
  * @returns {object} Inserted or updated token record.
  */
 const upsert = async ctx => {
-  const item = new Token({
-    uid: ctx.state.jwtClaim.uid,
-    refreshToken: ctx.state.refreshToken,
-  })
   try {
-    await item.save()
+    await Token().update({
+      uid: ctx.state.jwtClaim.uid,
+      refreshToken: ctx.state.refreshToken,
+    })
     return true
   } catch (error) {
     ctx.throw(500, 'Refresh token upsert operation failed', { error })
@@ -38,7 +37,7 @@ const upsert = async ctx => {
  */
 const update = async ctx => {
   try {
-    await Token.update(
+    await Token().update(
       { uid: ctx.state.jwtClaim.uid },
       { refreshToken: ctx.state.refreshToken },
       {

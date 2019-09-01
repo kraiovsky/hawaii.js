@@ -2,7 +2,6 @@ const config = require('config')
 const Model = require('@hypefight/database')
 const dbConfig = require('../../config/database')()
 
-const tableName = config.get('dbTokensTableName')
 const modelSchema = {
   uid: {
     type: String,
@@ -20,4 +19,7 @@ const modelOptions = {
   timestamps: true,
 }
 
-module.exports = Model(tableName, modelSchema, modelOptions, dbConfig)
+module.exports = () => {
+  const tableName = config.get('dbTokensTableName')
+  return Model(tableName, modelSchema, modelOptions, dbConfig)
+}

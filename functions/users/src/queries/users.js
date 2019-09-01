@@ -15,7 +15,7 @@ const User = require('../models/users')
  */
 const create = async (ctx, email) => {
   try {
-    const user = await User.update(email, { email }, { createRequired: true })
+    const user = await User().update(email, { email }, { createRequired: true })
     return {
       data: user,
       created: Date.parse(user.createdAt) === Date.parse(user.updatedAt),
@@ -36,7 +36,9 @@ const create = async (ctx, email) => {
  */
 const find = async (ctx, query) => {
   try {
-    const user = await User.queryOne(query).exec()
+    const user = await User()
+      .queryOne(query)
+      .exec()
     return user
   } catch (error) {
     ctx.throw(500, 'Failed to query a user', { error })
