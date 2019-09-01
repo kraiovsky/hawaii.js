@@ -1,4 +1,4 @@
-service: ${env:SERVICE_NAME}
+service: ${self:custom.environment.SERVICE_NAME}
 
 plugins:
   - serverless-offline
@@ -8,9 +8,7 @@ plugins:
 
 package:
   exclude:
-    - '**/__fixtures__/**'
     - fixtures/**
-    - seeders/**
     - '**/__tests__/**'
     - '**/__mocks__/**'
     - aws.config.yml
@@ -23,11 +21,12 @@ package:
     - yarn-error.log
 
 custom:
+  environment: ${file(environment.yml):${opt:stage, 'development'}}
   envFiles: # for serverless-env-generator plugin
     - environment.yml
   envEncryptionKeyId: ${file(aws.config.yml):KMS_KEY_ID}
   serverless-offline:
-    port: ${env:PORT}
+    port: ${self:custom.environment.PORT}
   awsConfig: ${file(aws.config.yml):${opt:stage, 'development'}}
 
 provider:
@@ -46,7 +45,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${env:DB_TOKENS_TABLE_NAME}"
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:custom.environment.DB_TOKENS_TABLE_NAME}"
 
 functions:
   app:
@@ -73,7 +72,7 @@ resources:
       Type: AWS::DynamoDB::Table
       DeletionPolicy: Retain
       Properties:
-        TableName: ${env:DB_TOKENS_TABLE_NAME}
+        TableName: ${self:custom.environment.DB_TOKENS_TABLE_NAME}
         AttributeDefinitions:
           - AttributeName: uid
             AttributeType: S
