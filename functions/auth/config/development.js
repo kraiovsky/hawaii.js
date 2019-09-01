@@ -2,16 +2,17 @@ module.exports = {
   confirmTokenMaxAge: '5m',
   refreshTokenMaxAge: '30d',
   accessTokenMaxAge: '5m',
-  email: 'mail@hypefight.io',
+  email: 'no-reply@hawaii.js',
   usersApiUrl: 'http://localhost:5001',
   webClientUrl: 'http://localhost:5003',
+  // add config for your mail server i.e. https://ethereal.email; see https://nodemailer.com/about/
   smtp: {
-    host: 'smtp.ethereal.email',
-    port: 587,
+    host: '',
+    port: '',
     secure: '',
     auth: {
-      user: 'nc5oh62o3vf455cy@ethereal.email',
-      pass: '2QRjWypntsPve5nXPF',
+      user: '',
+      pass: '',
     },
   },
 }
