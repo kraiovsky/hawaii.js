@@ -8,7 +8,9 @@ plugins:
 
 package:
   exclude:
+    - '**/__fixtures__/**'
     - fixtures/**
+    - seeders/**
     - '**/__tests__/**'
     - '**/__mocks__/**'
     - aws.config.yml

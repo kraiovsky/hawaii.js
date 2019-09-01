@@ -8,7 +8,9 @@ plugins:
 
 package:
   exclude:
+    - '**/__fixtures__/**'
     - fixtures/**
+    - seeders/**
     - '**/__tests__/**'
     - '**/__mocks__/**'
     - aws.config.yml
@@ -78,11 +80,11 @@ resources:
           - AttributeName: email
             KeyType: HASH
         ProvisionedThroughput: ${self:custom.awsConfig.DYNAMODB.USERS_TABLE.TABLE_THROUGHPUT}
-        GlobalSecondaryIndexes: 
+        GlobalSecondaryIndexes:
           - IndexName: idGlobalIndex
-            KeySchema: 
+            KeySchema:
               - AttributeName: id
                 KeyType: HASH
-            Projection: 
+            Projection:
               ProjectionType: ALL
             ProvisionedThroughput: ${self:custom.awsConfig.DYNAMODB.USERS_TABLE.ID_GLOBAL_INDEX_THROUGHPUT}
