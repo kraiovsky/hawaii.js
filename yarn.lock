@@ -9200,10 +9200,9 @@ serverless-dotenv-plugin@^2.0.1:
     dotenv "^4.0.0"
     dotenv-expand "^4.0.1"
 
-serverless-env-generator@^1.1.2:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/serverless-env-generator/-/serverless-env-generator-1.4.1.tgz#f60ebaa30648489e5df4a59cc7ab7ab47a9cb005"
-  integrity sha512-Ldw02QPttRlJbCgum5OnlRMFG6PYQoDrTv4aSTVieQTDPs3moCGrfXflmz8QhedgQ0u1DBtyKHmaS8tU3vRT7Q==
+"serverless-env-generator@github:rkrayovskyy/serverless-env-generator#master":
+  version "1.4.0"
+  resolved "https://codeload.github.com/rkrayovskyy/serverless-env-generator/tar.gz/1ea584096ca7381e660263508ba272d4b6e181b7"
   dependencies:
     aws-sdk "^2.273.1"
     dotenv "^7.0.0"

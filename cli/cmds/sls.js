@@ -27,7 +27,7 @@ yargs
     desc: chalk.bold.green('generate env vars from environment.yml'),
     handler: argv => {
       cd(`functions/${argv.function}`)
-      exec(`sls env generate`)
+      exec(`sls env generate -k`)
     },
   })
   .command({
