@@ -8,7 +8,9 @@
   "private": true,
   "main": "index.js",
   "workspaces": {
-    "nohoist": ["**"]
+    "nohoist": [
+      "**"
+    ]
   },
   "dependencies": {
     "dynamoose": "^1.3.0"
