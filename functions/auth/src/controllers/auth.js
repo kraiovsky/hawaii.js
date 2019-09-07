@@ -2,8 +2,8 @@
  * @file Authentication controller
  */
 const ms = require('ms')
-const { generateToken, verifyToken } = require('@hypefight/auth-client/libs/token')
-const email = require('@hypefight/email-client')
+const { generateToken, verifyToken } = require('@hawaii-js/auth-client/libs/token')
+const email = require('@hawaii-js/email-client')
 const Users = require('../api/users')
 const Tokens = require('../queries/tokens')
 const generateEmail = require('../../email-templates')

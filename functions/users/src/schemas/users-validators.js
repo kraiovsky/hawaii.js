@@ -1,5 +1,5 @@
 const Joi = require('@hapi/joi')
-const { RES_JSON_API_SCHEMA } = require('@hypefight/validation-schemas')
+const { RES_JSON_API_SCHEMA } = require('@hawaii-js/validation-schemas')
 
 const USER = Joi.object()
   .keys({

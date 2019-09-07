@@ -1,10 +1,10 @@
 const Router = require('koa-joi-router')
-const { SignTransportReq } = require('@hypefight/auth-client')
+const { SignTransportReq } = require('@hawaii-js/auth-client')
 const {
   LOGIN_REQ_BODY,
   RES_AUTH_HEADERS_VALIDATION,
   RES_ERROR_VALIDATION,
-} = require('@hypefight/validation-schemas')
+} = require('@hawaii-js/validation-schemas')
 const {
   CONFIRM_REQ_PARAMS,
   REFRESH_REQ_BODY,

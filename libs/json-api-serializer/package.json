@@ -1,5 +1,5 @@
 {
-  "name": "@hypefight/json-api-serializer",
+  "name": "@hawaii-js/json-api-serializer",
   "description": "",
   "keywords": [],
   "repository": "",
@@ -19,7 +19,7 @@
     "json-api-serializer": "^2.0.2"
   },
   "devDependencies": {
-    "@hypefight/test-helpers": "^0.0.1",
+    "@hawaii-js/test-helpers": "^0.0.1",
     "jest": "^24.0.0"
   }
 }

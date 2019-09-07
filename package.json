@@ -1,5 +1,5 @@
 {
-  "name": "root",
+  "name": "hawaii-js-root",
   "private": true,
   "bin": {
     "prettier": "./node_modules/prettier/bin-prettier"

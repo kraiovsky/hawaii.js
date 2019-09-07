@@ -1,7 +1,7 @@
 const { Serializer } = require('../')
 const {
   dbQueries: { mockFirstRecord },
-} = require('@hypefight/test-helpers')
+} = require('@hawaii-js/test-helpers')
 const mockUsersDB = require('../../../functions/users/__fixtures__/users')
 const mockUserObject = require('../fixtures/userSerializationObject')
 

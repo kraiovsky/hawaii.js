@@ -1,6 +1,6 @@
 const {
   dbQueries: { mockFindByKey },
-} = require('@hypefight/test-helpers')
+} = require('@hawaii-js/test-helpers')
 const mockUsersDB = require('../../../__fixtures__/users')
 const mockNewUser = require('../../../__fixtures__/newUser')
 

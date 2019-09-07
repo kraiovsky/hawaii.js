@@ -1,8 +1,8 @@
 const { createMockContext } = require('@shopify/jest-koa-mocks')
-const { generateToken } = require('@hypefight/auth-client/libs/token')
+const { generateToken } = require('@hawaii-js/auth-client/libs/token')
 const {
   dbQueries: { mockFirstRecord },
-} = require('@hypefight/test-helpers')
+} = require('@hawaii-js/test-helpers')
 const mockUsersDB = require('../../../../users/__fixtures__/users')
 const { createUserMock } = require('../../../../users/__mocks__/v1')
 const {
@@ -19,7 +19,7 @@ const { JWT_REGEX } = require('../../../config/constants')
 const testCases = require('./auth.cases')
 
 jest.mock('../../queries/tokens')
-jest.mock('@hypefight/email-client')
+jest.mock('@hawaii-js/email-client')
 
 const config = {
   refreshTokenMaxAge: '30d',

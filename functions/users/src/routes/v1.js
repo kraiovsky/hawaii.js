@@ -1,6 +1,6 @@
 const Router = require('koa-joi-router')
 const { createUser, findUser } = require('../controllers/v1')
-const { Authenticate, Authorize } = require('@hypefight/auth-client')
+const { Authenticate, Authorize } = require('@hawaii-js/auth-client')
 const { USER_PROFILE_RES_SUCCESS } = require('../schemas/users-validators')
 const {
   LOGIN_REQ_BODY,
@@ -9,7 +9,7 @@ const {
   UUID_SCHEMA,
   EMAIL_SCHEMA,
   QUERY_FIELDS_SCHEMA,
-} = require('@hypefight/validation-schemas')
+} = require('@hawaii-js/validation-schemas')
 
 const users = new Router()
 

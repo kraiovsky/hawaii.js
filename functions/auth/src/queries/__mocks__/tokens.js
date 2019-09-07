@@ -1,6 +1,6 @@
 const {
   dbQueries: { mockFindByKey },
-} = require('@hypefight/test-helpers')
+} = require('@hawaii-js/test-helpers')
 const mockTokensDB = require('../../../fixtures/tokens')
 const { INVALID_TOKEN } = require('../../../config/errors')
 

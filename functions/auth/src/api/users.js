@@ -1,7 +1,7 @@
 /**
  * @file Users REST HTTP client.
  */
-const restClient = require('@hypefight/s2s-rest-client')
+const restClient = require('@hawaii-js/s2s-rest-client')
 
 /**
  * Create user helper method.

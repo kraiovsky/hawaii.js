@@ -1,7 +1,7 @@
 /**
  * @file Users API schema generator.
  */
-const schema = require('@hypefight/json-api-schema-generator')
+const schema = require('@hawaii-js/json-api-schema-generator')
 
 /**
  * Takes whitelisted fields and generates api schema for user.

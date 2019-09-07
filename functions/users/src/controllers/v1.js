@@ -1,7 +1,7 @@
 /**
  * @file Users controller.
  */
-const { Serializer } = require('@hypefight/json-api-serializer')
+const { Serializer } = require('@hawaii-js/json-api-serializer')
 const Users = require('../queries/users')
 const userSchema = require('../schemas/generators')
 const { USER_NOT_FOUND } = require('../../config/errors')

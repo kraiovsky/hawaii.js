@@ -1,8 +1,8 @@
 const nock = require('nock')
 const {
   dbQueries: { mockFindByKey },
-} = require('@hypefight/test-helpers')
-const { Serializer } = require('@hypefight/json-api-serializer')
+} = require('@hawaii-js/test-helpers')
+const { Serializer } = require('@hawaii-js/json-api-serializer')
 const userSchema = require('../src/schemas/generators')
 const mockUsersDB = require('../__fixtures__/users')
 const mockNewUser = require('../__fixtures__/newUser')

@@ -1,5 +1,5 @@
 {
-  "name": "@hypefight/users",
+  "name": "@hawaii-js/users",
   "description": "",
   "keywords": [],
   "repository": "",
@@ -18,14 +18,14 @@
   },
   "dependencies": {
     "@hapi/joi": "^15.0.0",
-    "@hypefight/auth-client": "^0.0.1",
-    "@hypefight/config": "^0.0.1",
-    "@hypefight/database": "^0.0.1",
-    "@hypefight/error-handler": "^0.0.1",
-    "@hypefight/json-api-schema-generator": "^0.0.1",
-    "@hypefight/json-api-serializer": "^0.0.1",
-    "@hypefight/request-id": "^0.0.1",
-    "@hypefight/validation-schemas": "^0.0.1",
+    "@hawaii-js/auth-client": "^0.0.1",
+    "@hawaii-js/config": "^0.0.1",
+    "@hawaii-js/database": "^0.0.1",
+    "@hawaii-js/error-handler": "^0.0.1",
+    "@hawaii-js/json-api-schema-generator": "^0.0.1",
+    "@hawaii-js/json-api-serializer": "^0.0.1",
+    "@hawaii-js/request-id": "^0.0.1",
+    "@hawaii-js/validation-schemas": "^0.0.1",
     "@koa/cors": "^3.0.0",
     "config": "^3.0.1",
     "dotenv": "^8.0.0",
@@ -38,7 +38,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "@hypefight/test-helpers": "^0.0.1",
+    "@hawaii-js/test-helpers": "^0.0.1",
     "@shopify/jest-koa-mocks": "^2.1.0",
     "faker": "^4.1.0",
     "jest": "^24.0.0",

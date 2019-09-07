@@ -1,5 +1,5 @@
 const config = require('config')
-const Model = require('@hypefight/database')
+const Model = require('@hawaii-js/database')
 const dbConfig = require('../../config/database')()
 
 const modelSchema = {
