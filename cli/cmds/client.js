@@ -11,12 +11,12 @@ yargs
   .middleware([])
   .command({
     command: 'web <action>',
-    desc: chalk.bold.green('start next.js web client'),
+    desc: chalk.bold.green('CLI actions for Next.js web client'),
     builder: yargs => {
       yargs.positional('<action>', {
         describe: chalk.yellow('action to execute on web client'),
         type: 'string',
-        choices: ['dev', 'build', 'start'],
+        choices: ['dev', 'build', 'start', 'deploy'],
         coerce: action => action,
       })
     },

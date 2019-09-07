@@ -12,7 +12,8 @@
     "dev": "next -p 5003",
     "build": "next build",
     "start": "next start",
-    "test": "NODE_ENV=development jest"
+    "test": "NODE_ENV=development jest",
+    "deploy": "sls deploy -s production"
   },
   "dependencies": {
     "final-form": "^4.13.1",
