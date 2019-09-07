@@ -7,6 +7,6 @@ module.exports = async argv => {
   env.NODE_CONFIG = nodeConfig
 
   const Model = require(pwd() + `/functions/${argv.function}/src/models/${modelNameLowercased}`)
-  await Model().deleteTable()
-  await console.log(`💣 ${tableNameValue} table destroyed.`)
+  await Model()
+  await console.log(`🎉 ${tableNameValue} successfully migrated.`)
 }

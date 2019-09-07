@@ -21,13 +21,12 @@ module.exports = (modelName, modelSchema, modelOptions, dbConfig) => {
   }
   const Schema = dynamoose.Schema
   const schema = new Schema(modelSchema, modelOptions)
-  schema.statics.deleteTable = () =>
-    new Promise((resolve, reject) => {
-      const dynamoDB = dynamoose.ddb()
-      dynamoDB.deleteTable({ TableName: modelName }, (err, resp) => {
-        if (err) reject(err)
-        resolve(resp)
-      })
+  schema.statics.deleteTable = () => {
+    const dynamoDB = dynamoose.ddb()
+    dynamoDB.deleteTable({ TableName: modelName }, (err, resp) => {
+      if (err) console.error(err)
+      process.exit(0)
     })
+  }
   return dynamoose.model(modelName, schema)
 }

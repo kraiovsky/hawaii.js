@@ -1,9 +1,11 @@
 const yargonaut = require('yargonaut')
 const yargs = require('yargs')
-const { exec, env } = require('shelljs')
+const { exec } = require('shelljs')
 
 const demandOptions = require('../utils/demand-options')
-const buildDbTableName = require('../utils/build-db-table-name')
+const seedTable = require('../scripts/db/seed-table')
+const migrateTable = require('../scripts/db/migrate-table')
+const deleteTable = require('../scripts/db/delete-table')
 
 yargonaut.style('cyan').errorsStyle('red')
 const chalk = yargonaut.chalk()
@@ -30,50 +32,37 @@ yargs
     type: 'string',
   })
   .command({
+    command: 'delete',
+    desc: chalk.bold.green('delete table'),
+    handler: async argv => {
+      demandOptions(['environment', 'function', 'table'], argv)
+      await deleteTable(argv)
+    },
+  })
+  .command({
     command: 'migrate',
     desc: chalk.bold.green('build table'),
-    handler: argv => {
+    handler: async argv => {
       demandOptions(['environment', 'function', 'table'], argv)
-      const { modelNameCapitalized, nodeConfig, tableNameValue } = buildDbTableName(argv)
-      env['NODE_ENV'] = argv.environment
-      exec(
-        `node functions/${argv.function}/src/models/${modelNameCapitalized} --NODE_CONFIG='${nodeConfig}'`
-      )
-      console.log(`🎉 ${tableNameValue} successfully migrated.`)
+      await migrateTable(argv)
     },
   })
   .command({
     command: 'seed',
     desc: chalk.bold.green('seed table'),
-    handler: argv => {
+    handler: async argv => {
       demandOptions(['environment', 'function', 'table'], argv)
-      const { modelNameLowercased, nodeConfig, tableNameValue } = buildDbTableName(argv)
-      env['NODE_ENV'] = argv.environment
-      exec(
-        `node functions/${argv.function}/seeders/${modelNameLowercased} --NODE_CONFIG='${nodeConfig}'`
-      )
-      console.log(`🎉 ${tableNameValue} successfully seeded.`)
+      await seedTable(argv)
     },
   })
   .command({
     command: 'reset',
     desc: chalk.bold.red('reset table (delete-build-seed)'),
-    handler: argv => {
+    handler: async argv => {
       demandOptions(['environment', 'function', 'table'], argv)
-      const {
-        modelNameCapitalized,
-        modelNameLowercased,
-        nodeConfig,
-        tableNameValue,
-      } = buildDbTableName(argv)
-      env['FN_NAME'] = argv.function
-      env['TABLE_NAME'] = modelNameCapitalized
-      exec(`node cli/scripts/db/delete-table`, { async: true })
-      exec(
-        `node functions/${argv.function}/seeders/${modelNameLowercased} --NODE_CONFIG='${nodeConfig}'`,
-        { async: true }
-      )
-      console.log(`🎉 ${tableNameValue} successfully reset.`)
+      exec(`yarn db delete -f ${argv.function} -t ${argv.table} -e ${argv.environment}`)
+      exec(`yarn db migrate -f ${argv.function} -t ${argv.table} -e ${argv.environment}`)
+      exec(`yarn db seed -f ${argv.function} -t ${argv.table} -e ${argv.environment}`)
     },
   })
   .command({
