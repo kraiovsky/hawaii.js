@@ -7,6 +7,7 @@ module.exports = {
     '/static/',
     '/coverage/',
     '/fixtures/',
+    '/__fixtures__/',
     '/__mocks__/',
     '__helpers__',
     '/.vs/',

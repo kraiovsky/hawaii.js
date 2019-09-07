@@ -15,6 +15,7 @@ module.exports = {
     '/fixtures/',
     '/__mocks__/',
     '__helpers__',
+    '__fixtures__',
     '/.vs/',
     '/.vscode/',
     '/.serverless/',
