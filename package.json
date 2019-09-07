@@ -1,5 +1,18 @@
 {
   "name": "hawaii-js-root",
+  "description": "Koa2 and Next.js full-stack, serverless-ready, monorepo boilerplate",
+  "keywords": [
+    "Koa2",
+    "Next.js",
+    "Serverless",
+    "AWS",
+    "AWS Lambda",
+    "DynamoDB",
+    "boilerplate"
+  ],
+  "repository": "https://github.com/rkrayovskyy/hawaii.js",
+  "author": "Roman Krayovskyy <rkrayovskyy@gmail.com>",
+  "license": "MIT",
   "private": true,
   "bin": {
     "prettier": "./node_modules/prettier/bin-prettier"
