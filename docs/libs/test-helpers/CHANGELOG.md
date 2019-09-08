@@ -1,6 +1,6 @@
 ---
 id: test-helpers-changelog
-title: Test-helpers changelog
+title: test-helpers changelog
 sidebar_label: Changelog
 ---
 ## Changelog

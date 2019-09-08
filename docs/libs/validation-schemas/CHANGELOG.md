@@ -1,6 +1,6 @@
 ---
 id: validation-schemas-changelog
-title: Validation-schemas changelog
+title: validation-schemas changelog
 sidebar_label: Changelog
 ---
 ## Changelog

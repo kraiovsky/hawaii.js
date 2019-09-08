@@ -1,6 +1,6 @@
 ---
 id: database-changelog
-title: Database changelog
+title: database changelog
 sidebar_label: Changelog
 ---
 ## Changelog

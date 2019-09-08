@@ -38,91 +38,91 @@
         "sidebar_label": "Test"
       },
       "libs/auth-client/auth-client-changelog": {
-        "title": "Auth-client changelog",
+        "title": "auth-client changelog",
         "sidebar_label": "Changelog"
       },
       "libs/auth-client/auth-client-readme": {
-        "title": "Auth-client readme",
+        "title": "auth-client",
         "sidebar_label": "Readme"
       },
       "libs/config/config-changelog": {
-        "title": "Config changelog",
+        "title": "config changelog",
         "sidebar_label": "Changelog"
       },
       "libs/config/config-readme": {
-        "title": "Config readme",
+        "title": "config",
         "sidebar_label": "Readme"
       },
       "libs/database/database-changelog": {
-        "title": "Database changelog",
+        "title": "database changelog",
         "sidebar_label": "Changelog"
       },
       "libs/database/database-readme": {
-        "title": "Database readme",
+        "title": "database",
         "sidebar_label": "Readme"
       },
       "libs/email-client/email-client-changelog": {
-        "title": "Email-client changelog",
+        "title": "email-client changelog",
         "sidebar_label": "Changelog"
       },
       "libs/email-client/email-client-readme": {
-        "title": "Email-client readme",
+        "title": "email-client",
         "sidebar_label": "Readme"
       },
       "libs/error-handler/error-handler-changelog": {
-        "title": "Error-handler changelog",
+        "title": "error-handler changelog",
         "sidebar_label": "Changelog"
       },
       "libs/error-handler/error-handler-readme": {
-        "title": "Error-handler readme",
+        "title": "error-handler",
         "sidebar_label": "Readme"
       },
       "libs/json-api-schema-generator/json-api-schema-generator-changelog": {
-        "title": "Json-api-schema-generator changelog",
+        "title": "json-api-schema-generator changelog",
         "sidebar_label": "Changelog"
       },
       "libs/json-api-schema-generator/json-api-schema-generator-readme": {
-        "title": "Json-api-schema-generator readme",
+        "title": "json-api-schema-generator",
         "sidebar_label": "Readme"
       },
       "libs/json-api-serializer/json-api-serializer-changelog": {
-        "title": "Json-api-serializer changelog",
+        "title": "json-api-serializer changelog",
         "sidebar_label": "Changelog"
       },
       "libs/json-api-serializer/json-api-serializer-readme": {
-        "title": "Json-api-serializer readme",
+        "title": "json-api-serializer",
         "sidebar_label": "Readme"
       },
       "libs/request-id/request-id-changelog": {
-        "title": "Request-id changelog",
+        "title": "request-id changelog",
         "sidebar_label": "Changelog"
       },
       "libs/request-id/request-id-readme": {
-        "title": "Request-id readme",
+        "title": "request-id",
         "sidebar_label": "Readme"
       },
       "libs/s2s-rest-client/s2s-rest-client-changelog": {
-        "title": "S2s-rest-client changelog",
+        "title": "s2s-rest-client changelog",
         "sidebar_label": "Changelog"
       },
       "libs/s2s-rest-client/s2s-rest-client-readme": {
-        "title": "S2s-rest-client readme",
+        "title": "s2s-rest-client",
         "sidebar_label": "Readme"
       },
       "libs/test-helpers/test-helpers-changelog": {
-        "title": "Test-helpers changelog",
+        "title": "test-helpers changelog",
         "sidebar_label": "Changelog"
       },
       "libs/test-helpers/test-helpers-readme": {
-        "title": "Test-helpers readme",
+        "title": "test-helpers",
         "sidebar_label": "Readme"
       },
       "libs/validation-schemas/validation-schemas-changelog": {
-        "title": "Validation-schemas changelog",
+        "title": "validation-schemas changelog",
         "sidebar_label": "Changelog"
       },
       "libs/validation-schemas/validation-schemas-readme": {
-        "title": "Validation-schemas readme",
+        "title": "validation-schemas",
         "sidebar_label": "Readme"
       },
       "readme": {

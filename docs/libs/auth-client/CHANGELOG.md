@@ -1,6 +1,6 @@
 ---
 id: auth-client-changelog
-title: Auth-client changelog
+title: auth-client changelog
 sidebar_label: Changelog
 ---
 ## Changelog

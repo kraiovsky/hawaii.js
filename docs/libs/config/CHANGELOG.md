@@ -1,6 +1,6 @@
 ---
 id: config-changelog
-title: Config changelog
+title: config changelog
 sidebar_label: Changelog
 ---
 ## Changelog
