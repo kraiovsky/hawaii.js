@@ -21,8 +21,8 @@ const users = [
 ]
 
 const siteConfig = {
-  title: 'Hypefight', // Title for your website.
-  tagline: 'Fight that hype.',
+  title: 'Hawaii.js', // Title for your website.
+  tagline: 'Koa2, Next.js and Serverless boilerplate.',
   url: '', // Your website URL
   baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
@@ -30,16 +30,18 @@ const siteConfig = {
   //   baseUrl: '/test-site/',
 
   // Used for publishing and more
-  projectName: 'Hypefight',
-  organizationName: 'Hypefight',
+  projectName: 'Hawaii.js',
+  organizationName: 'Hawaii.js',
   // For top-level user or org sites, the organization is still the same.
   // e.g., for the https://JoelMarcey.github.io site, it would be set like...
   //   organizationName: 'JoelMarcey'
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    { doc: 'readme', label: 'Getting started' },
+    { doc: 'readme', label: 'Readme' },
+    { doc: 'how-to/setup', label: 'Setup' },
     { doc: 'changelog', label: 'Changelog' },
+    { href: 'https://github.com/rkrayovskyy/hawaii.js', label: 'GitHub' },
     // { page: 'help', label: 'Help' },
     // { blog: true, label: 'Blog' },
   ],
@@ -49,14 +51,14 @@ const siteConfig = {
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/docusaurus.svg',
-  footerIcon: 'img/docusaurus.svg',
-  favicon: 'img/favicon.png',
+  headerIcon: 'img/koa-tree.png',
+  footerIcon: 'img/koa-tree.png',
+  favicon: 'img/favicon/favicon.png',
 
   /* Colors for website */
   colors: {
-    primaryColor: '#2E8555',
-    secondaryColor: '#205C3B',
+    primaryColor: '#26547C',
+    secondaryColor: '#FFD166',
   },
 
   /* Custom fonts for website */

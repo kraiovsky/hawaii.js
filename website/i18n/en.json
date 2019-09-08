@@ -3,7 +3,7 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "Fight that hype.",
+    "tagline": "Koa2, Next.js and Serverless boilerplate.",
     "docs": {
       "changelog": {
         "title": "Changelog",
@@ -131,8 +131,10 @@
       }
     },
     "links": {
-      "Getting started": "Getting started",
-      "Changelog": "Changelog"
+      "Readme": "Readme",
+      "Setup": "Setup",
+      "Changelog": "Changelog",
+      "GitHub": "GitHub"
     },
     "categories": {
       "Introduction": "Introduction",
