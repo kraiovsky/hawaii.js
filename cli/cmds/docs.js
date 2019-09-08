@@ -9,6 +9,7 @@ const prepareDocs = () => {
   exec('node cli/scripts/docs/cleanup')
   exec('node cli/scripts/docs/copy-fns')
   exec('node cli/scripts/docs/copy-libs')
+  exec('node cli/scripts/docs/copy-readme')
   exec('node cli/scripts/docs/build-sidebars')
 }
 
