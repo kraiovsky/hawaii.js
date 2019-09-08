@@ -1,10 +1,9 @@
 const { ls, mkdir, cat, ShellString } = require('shelljs')
-const capitalize = require('../../utils/capitalize')
 
 const prependLibReadme = libName =>
   `---
 id: ${libName}-readme
-title: ${capitalize(libName)} readme
+title: ${libName}
 sidebar_label: Readme
 ---
 `
@@ -12,7 +11,7 @@ sidebar_label: Readme
 const prependLibChangelog = libName =>
   `---
 id: ${libName}-changelog
-title: ${capitalize(libName)} changelog
+title: ${libName} changelog
 sidebar_label: Changelog
 ---
 `

@@ -30,7 +30,7 @@ yargs
     command: 'run',
     desc: chalk.bold.green('start local Docusaurus website'),
     handler: argv => {
-      if (argv.prepareDocs) prepareDocs()
+      if (argv.prepare) prepareDocs()
       cd('website')
       exec('yarn start')
     },
@@ -39,7 +39,7 @@ yargs
     command: 'build',
     desc: chalk.bold.green('build documentation for publishing'),
     handler: argv => {
-      if (argv.prepareDocs) prepareDocs()
+      if (argv.prepare) prepareDocs()
       cd('website')
       exec('yarn build')
     },
