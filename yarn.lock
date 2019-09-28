@@ -9242,10 +9242,10 @@ serverless-offline@^5.5.0:
     update-notifier "^3.0.1"
     velocityjs "^1.1.4"
 
-serverless-plugin-monorepo@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/serverless-plugin-monorepo/-/serverless-plugin-monorepo-0.7.0.tgz#38d6c52d96076da2c202fdc6ed4525ea28b9bd04"
-  integrity sha512-teGIWxQo61ly1ml3AhKloSlr3bXIHvcY7zhC31DfcBjhtgGEmKzP6oWuNI1WbWYEmvziZk/fzeVpyKYPzC3XiQ==
+serverless-plugin-monorepo@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/serverless-plugin-monorepo/-/serverless-plugin-monorepo-0.8.0.tgz#1cba60f83df68c308ed02ec7c619806c588ee68b"
+  integrity sha512-KGrPfnZtdC0ZiSU1LUPn+LLCFUfzjb+DuJrD1tje8IhxkSabGk6qcQfG4mBEszK/cih+eE+nl8A7vZSDQ4fE0A==
   dependencies:
     fs-extra "^7.0.0"
 

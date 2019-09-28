@@ -47,6 +47,6 @@
     "serverless-dotenv-plugin": "^2.0.1",
     "serverless-env-generator": "github:rkrayovskyy/serverless-env-generator#master",
     "serverless-offline": "^5.5.0",
-    "serverless-plugin-monorepo": "^0.7.0"
+    "serverless-plugin-monorepo": "^0.8.0"
   }
 }
