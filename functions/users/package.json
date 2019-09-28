@@ -1,7 +1,15 @@
 {
   "name": "@hawaii-js/users",
   "description": "Hawaii.js: Users management service",
-  "keywords": ["Koa2", "Next.js", "Serverless", "AWS", "AWS Lambda", "DynamoDB", "boilerplate"],
+  "keywords": [
+    "Koa2",
+    "Next.js",
+    "Serverless",
+    "AWS",
+    "AWS Lambda",
+    "DynamoDB",
+    "boilerplate"
+  ],
   "repository": "https://github.com/rkrayovskyy/hawaii.js",
   "author": "Roman Krayovskyy <rkrayovskyy@gmail.com>",
   "license": "MIT",
