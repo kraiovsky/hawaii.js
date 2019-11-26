@@ -1,7 +1,7 @@
-const capitalize = require('./capitalize')
+const toCamelCase = require('./toCamelCase')
 
 module.exports = ({ table, function: fn, environment }) => {
-  const modelNameCapitalized = capitalize(table)
+  const modelNameCapitalized = toCamelCase(table)
   const modelNameLowercased = table.toLowerCase()
 
   const tableNameKey = `db${modelNameCapitalized}TableName`
