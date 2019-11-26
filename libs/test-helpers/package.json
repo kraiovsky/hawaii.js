@@ -1,7 +1,15 @@
 {
   "name": "@hawaii-js/test-helpers",
   "description": "Hawaii.js: collection of test helpers",
-  "keywords": ["Koa2", "Next.js", "Serverless", "AWS", "AWS Lambda", "DynamoDB", "boilerplate"],
+  "keywords": [
+    "Koa2",
+    "Next.js",
+    "Serverless",
+    "AWS",
+    "AWS Lambda",
+    "DynamoDB",
+    "boilerplate"
+  ],
   "repository": "https://github.com/rkrayovskyy/hawaii.js",
   "author": "Roman Krayovskyy <rkrayovskyy@gmail.com>",
   "license": "MIT",
@@ -9,9 +17,11 @@
   "private": true,
   "main": "index.js",
   "workspaces": {
-    "nohoist": ["**"]
+    "nohoist": [
+      "**"
+    ]
   },
   "dependencies": {
-    "lodash.find": "^4.6.0"
+    "lodash.filter": "^4.6.0"
   }
 }
