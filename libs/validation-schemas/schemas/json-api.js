@@ -1,6 +1,6 @@
 const Joi = require('@hapi/joi')
 
-module.exports.RES_JSON_API_SCHEMA = dataObject => {
+module.exports.RES_JSON_API_SCHEMA = (dataObject, dependencyObject = {}) => {
   return {
     jsonapi: Joi.object()
       .keys({
@@ -11,7 +11,7 @@ module.exports.RES_JSON_API_SCHEMA = dataObject => {
       index: Joi.string(),
     }),
     meta: Joi.object(),
-    included: Joi.object(),
+    included: Joi.array().items(dependencyObject),
     data: dataObject,
   }
 }
