@@ -21,10 +21,11 @@ const Authenticate = () => async (ctx, next) => {
 /**
  * Authorization utility.
  *
- * @param {object} ctx - Koa2 context object.
- * @param {function} next - Koa2 function to proceed to the next handler.
+ * @param {Array} scope - Scope, user has an access to.
+ * @param {Object} ctx - Koa2 context object.
+ * @param {Function} next - Koa2 function to proceed to the next handler.
  *
- * @returns {object} Sets user object with authenticated user's details and proceeds to the next handler.
+ * @returns {Object} Sets user object with authenticated user's details and proceeds to the next handler.
  */
 const Authorize = (scope = []) => async (ctx, next) => {
   const permissions = [...scope, 'admin']
