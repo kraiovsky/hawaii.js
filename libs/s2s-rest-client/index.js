@@ -16,13 +16,13 @@ module.exports = serviceUrlConfigKey => async ctx => {
   const {
     state: {
       serviceToken,
-      config: { [serviceUrlConfigKey]: url, requestIdHeader },
+      config: { [serviceUrlConfigKey]: prefixUrl, requestIdHeader },
     },
   } = ctx
   const requestId = ctx.response.get(requestIdHeader)
   return got.extend({
-    baseUrl: url,
-    json: true,
+    prefixUrl,
+    responseType: 'json',
     headers: {
       Authorization: 'Bearer ' + serviceToken,
       [requestIdHeader]: requestId,

@@ -1,17 +1,27 @@
 {
   "name": "@hawaii-js/s2s-rest-client",
   "description": "Hawaii.js: service-to-service communication client",
-  "keywords": ["Koa2", "Next.js", "Serverless", "AWS", "AWS Lambda", "DynamoDB", "boilerplate"],
+  "keywords": [
+    "Koa2",
+    "Next.js",
+    "Serverless",
+    "AWS",
+    "AWS Lambda",
+    "DynamoDB",
+    "boilerplate"
+  ],
   "repository": "https://github.com/rkrayovskyy/hawaii.js",
   "author": "Roman Krayovskyy <rkrayovskyy@gmail.com>",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "main": "index.js",
   "workspaces": {
-    "nohoist": ["**"]
+    "nohoist": [
+      "**"
+    ]
   },
   "dependencies": {
-    "got": "^9.0.0"
+    "got": "^10.0.1"
   }
 }

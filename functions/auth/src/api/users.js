@@ -17,9 +17,9 @@ const create = async ctx => {
       body: { email },
     },
   } = ctx
-  const body = { email }
+  const json = { email }
   const usersApi = await restClient('usersApiUrl')(ctx)
-  return await usersApi.post('/v1/users', { body })
+  return await usersApi.post('v1/users', { json })
 }
 
 module.exports = {
