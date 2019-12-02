@@ -1,5 +1,5 @@
 /**
- * @file Authentication controller
+ * @file Authentication controller.
  */
 const ms = require('ms')
 const { generateToken, verifyToken } = require('@hawaii-js/auth-client/libs/token')
@@ -182,7 +182,7 @@ const sendMagicLink = () => async ctx => {
     confirmToken: token,
   } = ctx.state
 
-  const magicLinkTpl = generateEmail['MAGIC_LINK']
+  const magicLinkTpl = generateEmail.MAGIC_LINK
   const magicLinkMsg = magicLinkTpl(fromName, fromEmail, toEmail, token, webClientUrl)
 
   try {
