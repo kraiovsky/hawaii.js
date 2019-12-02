@@ -1,7 +1,15 @@
 {
   "name": "@hawaii-js/web-client",
   "description": "Hawaii.js: Next.js web client deployable to AWS Lambda",
-  "keywords": ["Koa2", "Next.js", "Serverless", "AWS", "AWS Lambda", "DynamoDB", "boilerplate"],
+  "keywords": [
+    "Koa2",
+    "Next.js",
+    "Serverless",
+    "AWS",
+    "AWS Lambda",
+    "DynamoDB",
+    "boilerplate"
+  ],
   "repository": "https://github.com/rkrayovskyy/hawaii.js",
   "author": "Roman Krayovskyy <rkrayovskyy@gmail.com>",
   "license": "MIT",
@@ -35,7 +43,7 @@
     "jest": "^24.8.0",
     "prop-types": "^15.7.2",
     "react-test-renderer": "^16.8.6",
-    "serverless": "^1.38.0",
+    "serverless": "^1.59.1",
     "serverless-nextjs-plugin": "^2.3.2"
   }
 }

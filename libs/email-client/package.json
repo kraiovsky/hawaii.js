@@ -1,7 +1,15 @@
 {
   "name": "@hawaii-js/email-client",
   "description": "Hawaii.js: email client factory",
-  "keywords": ["Koa2", "Next.js", "Serverless", "AWS", "AWS Lambda", "DynamoDB", "boilerplate"],
+  "keywords": [
+    "Koa2",
+    "Next.js",
+    "Serverless",
+    "AWS",
+    "AWS Lambda",
+    "DynamoDB",
+    "boilerplate"
+  ],
   "repository": "https://github.com/rkrayovskyy/hawaii.js",
   "author": "Roman Krayovskyy <rkrayovskyy@gmail.com>",
   "license": "MIT",
@@ -9,9 +17,11 @@
   "private": true,
   "main": "index.js",
   "workspaces": {
-    "nohoist": ["**"]
+    "nohoist": [
+      "**"
+    ]
   },
   "dependencies": {
-    "nodemailer": "^6.2.1"
+    "nodemailer": "^6.4.0"
   }
 }

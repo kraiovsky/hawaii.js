@@ -51,7 +51,7 @@
     "@shopify/jest-koa-mocks": "^2.1.0",
     "jest": "^24.0.0",
     "nodemon": "^2.0.1",
-    "serverless": "^1.32.0",
+    "serverless": "^1.59.1",
     "serverless-dotenv-plugin": "^2.0.1",
     "serverless-env-generator": "github:rkrayovskyy/serverless-env-generator#master",
     "serverless-offline": "^5.5.0",
