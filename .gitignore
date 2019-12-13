@@ -5,6 +5,7 @@
 
 # serverless
 **/.serverless
+**/.serverless_nextjs
 
 # dynamodb-local data storage
 /.dynamodb-local

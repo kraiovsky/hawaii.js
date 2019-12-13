@@ -22,7 +22,7 @@
     "build": "next build",
     "start": "next start",
     "test": "NODE_ENV=development jest",
-    "deploy": "sls deploy -s production"
+    "deploy": "yarn build && sls"
   },
   "dependencies": {
     "final-form": "^4.13.1",
@@ -30,12 +30,11 @@
     "jsonwebtoken": "^8.5.1",
     "just-is-empty": "^2.0.1",
     "mappersmith": "^2.28.0",
-    "next": "^8.0.3",
+    "next": "^9.1.4",
     "next-aws-lambda": "^2.3.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-final-form": "^6.0.1",
-    "react-helmet": "^5.2.1",
     "react-redux": "^7.1.0",
     "redux": "^4.0.1"
   },
@@ -44,6 +43,6 @@
     "prop-types": "^15.7.2",
     "react-test-renderer": "^16.8.6",
     "serverless": "^1.59.1",
-    "serverless-nextjs-plugin": "^2.3.2"
+    "serverless-next.js": "^1.6.1"
   }
 }

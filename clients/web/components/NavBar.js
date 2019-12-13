@@ -11,7 +11,7 @@ export default () => {
   return (
     <>
       <div>
-        <Link prefetch href="/">
+        <Link href="/">
           <a>Home</a>
         </Link>
         {' | '}

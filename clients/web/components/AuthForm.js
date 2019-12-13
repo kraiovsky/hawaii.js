@@ -12,8 +12,8 @@ const AuthForm = ({ onSubmit }) => {
           <Field name="email" validate={composeValidators(required, mustBeEmail)}>
             {({ input, meta }) => (
               <div>
-                <label>Email</label>
-                <input {...input} type="text" placeholder="example@email.com" />
+                <label htmlFor="email">Email</label>
+                <input {...input} type="text" placeholder="example@email.com" id="email" />
                 {meta.error && meta.touched && <span>{meta.error}</span>}
               </div>
             )}
@@ -22,6 +22,7 @@ const AuthForm = ({ onSubmit }) => {
             <button type="submit" disabled={submitting}>
               Submit
             </button>
+            {/* eslint-disable-next-line react/jsx-handler-names */}
             <button type="button" onClick={form.reset} disabled={submitting || pristine}>
               Reset
             </button>

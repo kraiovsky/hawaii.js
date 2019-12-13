@@ -1,20 +1,2 @@
-service: web-client
-
-plugins:
-  - serverless-nextjs-plugin
-
-package:
-  exclude:
-    - ./**
-
-custom:
-  serverless-nextjs:
-    assetsBucketName: hawaii-js-demo
-    cloudFront: true
-
-provider:
-  name: aws
-  runtime: nodejs10.x
-  stage: ${opt:stage, 'development'}
-  profile: hawaii.js
-  region: ${opt:region, 'eu-north-1'}
+hawaii-js-web-client-demo:
+  component: serverless-next.js
