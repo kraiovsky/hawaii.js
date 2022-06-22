@@ -12,6 +12,6 @@
     "nohoist": ["**"]
   },
   "dependencies": {
-    "got": "^9.0.0"
+    "got": "^11.8.5"
   }
 }
