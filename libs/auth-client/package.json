@@ -12,6 +12,6 @@
     "nohoist": ["**"]
   },
   "dependencies": {
-    "jsonwebtoken": "^8.4.0"
+    "jsonwebtoken": "^9.0.0"
   }
 }
